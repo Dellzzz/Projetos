@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revisão de Matemática · 6º ano — Prof. Jardel A. Leite</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --vinho:#7d0d12;
+    --vermelho:#d11f27;
+    --vermelho-vivo:#ef3b3b;
+    --rosa:#ffe6e6;
+    --rosa-forte:#ffd0d0;
+    --papel:#fff7f6;
+    --branco:#ffffff;
+    --tinta:#2c2120;
+    --tinta-suave:#8a6f6d;
+    --linha:#f0d3d3;
+    --grade: rgba(209,31,39,.06);
+    --sombra: 0 14px 34px -18px rgba(125,13,18,.45);
+    --sombra-suave: 0 6px 16px -10px rgba(125,13,18,.4);
+    --r-grande: 22px;
+    --r-medio: 16px;
+    --r-pequeno: 11px;
+  }
+
+  *{ box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    margin:0;
+    font-family:'Nunito', system-ui, sans-serif;
+    color:var(--tinta);
+    background-color:var(--papel);
+    background-image:
+      linear-gradient(var(--grade) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grade) 1px, transparent 1px);
+    background-size: 26px 26px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+
+  h1,h2,h3,h4{ font-family:'Fredoka', sans-serif; font-weight:600; line-height:1.12; margin:0; }
+  p{ margin:0 0 1em; }
+  strong{ font-weight:800; color:var(--vinho); }
+  a{ color:inherit; }
+
+  .wrap{ width:min(1080px, 92vw); margin:0 auto; }
+
+  /* ---------------- Cabeçalho ---------------- */
+  header.topo{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,247,246,.86);
+    backdrop-filter:saturate(1.4) blur(10px);
+    -webkit-backdrop-filter:saturate(1.4) blur(10px);
+    border-bottom:2px solid var(--linha);
+  }
+  .topo-in{ display:flex; align-items:center; gap:14px; padding:12px 0; }
+  .marca{ display:flex; align-items:center; gap:11px; font-family:'Fredoka',sans-serif; font-weight:600; }
+  .logo{
+    width:42px; height:42px; border-radius:12px; flex:none;
+    background:linear-gradient(150deg, var(--vermelho-vivo), var(--vinho));
+    background-image:
+      linear-gradient(rgba(255,255,255,.32) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.32) 1px, transparent 1px),
+      linear-gradient(150deg, var(--vermelho-vivo), var(--vinho));
+    background-size: 10px 10px, 10px 10px, 100% 100%;
+    color:#fff; display:grid; place-items:center; font-size:1.05rem;
+    box-shadow: var(--sombra-suave);
+  }
+  .marca b{ font-weight:600; font-size:1.05rem; line-height:1; }
+  .marca span{ display:block; font-family:'Nunito',sans-serif; font-weight:700; font-size:.72rem; color:var(--tinta-suave); letter-spacing:.04em; text-transform:uppercase; }
+  nav.menu{ margin-left:auto; display:flex; gap:4px; flex-wrap:wrap; }
+  nav.menu a{
+    text-decoration:none; font-weight:700; font-size:.92rem; color:var(--tinta);
+    padding:7px 13px; border-radius:999px; transition:background .18s, color .18s;
+  }
+  nav.menu a:hover{ background:var(--rosa); color:var(--vinho); }
+  nav.menu a.ativo{ background:var(--vermelho); color:#fff; }
+
+  /* ---------------- Hero ---------------- */
+  .hero{ padding:54px 0 30px; }
+  .hero-grid{ display:grid; grid-template-columns: 1.25fr .85fr; gap:34px; align-items:center; }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-weight:800; font-size:.78rem; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--vermelho); background:var(--branco); border:2px solid var(--rosa-forte);
+    padding:6px 13px; border-radius:999px; margin-bottom:18px;
+  }
+  .eyebrow::before{ content:""; width:9px; height:9px; border-radius:3px; background:var(--vermelho); }
+  .hero h1{ font-size:clamp(2.3rem, 6vw, 3.7rem); font-weight:700; letter-spacing:-.01em; }
+  .hero h1 em{ font-style:normal; color:var(--vermelho); }
+  .hero .sub{ font-size:1.12rem; color:var(--tinta); max-width:46ch; margin-top:14px; }
+  .prof{
+    display:inline-flex; align-items:center; gap:11px; margin-top:24px;
+    background:var(--vinho); color:#fff; padding:9px 16px 9px 11px; border-radius:999px;
+    box-shadow:var(--sombra-suave); font-weight:700;
+  }
+  .prof .av{ width:30px; height:30px; border-radius:50%; background:#fff; color:var(--vinho); display:grid; place-items:center; font-family:'Fredoka',sans-serif; font-weight:600; }
+  .prof small{ display:block; font-weight:700; font-size:.68rem; opacity:.8; letter-spacing:.06em; text-transform:uppercase; line-height:1; margin-bottom:2px; }
+
+  .chips{ display:flex; flex-wrap:wrap; gap:9px; margin-top:26px; }
+  .chip{ background:var(--branco); border:2px solid var(--linha); border-radius:12px; padding:9px 14px; font-weight:800; font-size:.9rem; display:flex; align-items:center; gap:9px; }
+  .chip i{ width:22px; height:22px; border-radius:7px; background:var(--rosa); color:var(--vinho); display:grid; place-items:center; font-style:normal; font-family:'Fredoka',sans-serif; font-size:.8rem; }
+
+  .hero-cube{ display:grid; place-items:center; }
+
+  /* ---------------- Seções ---------------- */
+  section.bloco{ padding:40px 0; scroll-margin-top:84px; }
+  .cab{ display:flex; align-items:flex-end; gap:16px; margin-bottom:26px; border-bottom:3px solid var(--rosa-forte); padding-bottom:16px; }
+  .cab .num{ font-family:'Fredoka',sans-serif; font-weight:700; font-size:2.6rem; color:var(--vermelho); line-height:.8; }
+  .cab .ttl h2{ font-size:clamp(1.6rem,4vw,2.2rem); }
+  .cab .ttl p{ margin:4px 0 0; color:var(--tinta-suave); font-weight:700; font-size:.95rem; }
+
+  .card{
+    background:var(--branco); border:2px solid var(--linha); border-radius:var(--r-grande);
+    padding:26px; box-shadow:var(--sombra-suave);
+  }
+  .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+  .grid3{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+  .lead{ font-size:1.06rem; }
+
+  h3.mini{ font-size:1.2rem; color:var(--vinho); margin-bottom:10px; display:flex; align-items:center; gap:9px; }
+  h3.mini .tag{ font-size:.7rem; background:var(--vermelho); color:#fff; padding:3px 9px; border-radius:999px; font-family:'Nunito',sans-serif; font-weight:800; letter-spacing:.05em; text-transform:uppercase; }
+
+  /* destaque / fórmula */
+  .formula{
+    background:linear-gradient(145deg, var(--vinho), #b21820);
+    color:#fff; border-radius:var(--r-medio); padding:18px 22px; text-align:center;
+    font-family:'Fredoka',sans-serif; font-size:1.5rem; letter-spacing:.01em;
+    box-shadow:var(--sombra); margin:6px 0 14px;
+  }
+  .formula small{ display:block; font-family:'Nunito',sans-serif; font-weight:700; font-size:.82rem; opacity:.86; margin-top:6px; letter-spacing:.02em; }
+  .formula b{ color:#ffd9d9; }
+
+  .nota{
+    background:var(--rosa); border-left:6px solid var(--vermelho); border-radius:10px;
+    padding:13px 16px; margin:14px 0; font-weight:600;
+  }
+  .nota b{ color:var(--vinho); }
+
+  /* exemplo resolvido */
+  .ex{ background:var(--papel); border:2px dashed var(--rosa-forte); border-radius:var(--r-medio); padding:16px 18px; margin-top:14px; }
+  .ex .tt{ font-family:'Fredoka',sans-serif; font-weight:600; color:var(--vermelho); margin-bottom:6px; display:flex; align-items:center; gap:8px; }
+  .ex .tt::before{ content:"✎"; font-size:1.1rem; }
+  .passo{ margin:5px 0; }
+  .res{ display:inline-block; margin-top:8px; background:var(--vermelho); color:#fff; font-weight:800; padding:5px 13px; border-radius:9px; }
+
+  table.tbl{ width:100%; border-collapse:collapse; margin:8px 0 4px; font-weight:700; }
+  table.tbl th, table.tbl td{ border:2px solid var(--linha); padding:9px 10px; text-align:center; }
+  table.tbl th{ background:var(--vinho); color:#fff; font-family:'Fredoka',sans-serif; font-weight:500; }
+  table.tbl tr:nth-child(even) td{ background:var(--papel); }
+  table.tbl td:first-child{ color:var(--vinho); }
+
+  /* ---------- Porcentagem: grade 10x10 ---------- */
+  .pgrid{ display:grid; grid-template-columns:repeat(10,1fr); gap:3px; aspect-ratio:1; max-width:300px; margin:0 auto; }
+  .pgrid span{ background:var(--rosa); border-radius:3px; transition:background .15s ease, transform .15s ease; }
+  .pgrid span.on{ background:var(--vermelho); }
+  .pleg{ display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin-top:16px; }
+  .pleg .pill{ background:var(--branco); border:2px solid var(--linha); border-radius:10px; padding:8px 14px; text-align:center; min-width:84px; }
+  .pleg .pill b{ display:block; font-family:'Fredoka',sans-serif; font-size:1.3rem; color:var(--vermelho); }
+  .pleg .pill small{ color:var(--tinta-suave); font-weight:700; font-size:.72rem; text-transform:uppercase; letter-spacing:.06em; }
+
+  .slider{ margin-top:18px; }
+  .slider label{ font-weight:800; display:flex; justify-content:space-between; margin-bottom:6px; font-size:.95rem; }
+  input[type=range]{ width:100%; accent-color:var(--vermelho); height:26px; cursor:pointer; }
+
+  /* mini calculadora */
+  .calc{ display:grid; gap:12px; }
+  .campo{ display:flex; flex-direction:column; gap:5px; }
+  .campo label{ font-weight:800; font-size:.9rem; }
+  .campo input[type=number]{
+    font-family:'Nunito',sans-serif; font-weight:800; font-size:1.05rem; color:var(--tinta);
+    border:2px solid var(--linha); border-radius:11px; padding:11px 13px; background:var(--papel);
+  }
+  .campo input[type=number]:focus{ outline:3px solid var(--rosa-forte); border-color:var(--vermelho); }
+  .saida{
+    background:var(--vinho); color:#fff; border-radius:var(--r-medio); padding:16px 18px; margin-top:4px;
+  }
+  .saida .big{ font-family:'Fredoka',sans-serif; font-size:1.9rem; line-height:1; }
+  .saida .steps{ font-weight:700; opacity:.9; margin-top:8px; font-size:.92rem; }
+  .saida .steps strong{ color:#ffd9d9; }
+  .duo{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+
+  /* ---------- Juros: barras ---------- */
+  .jchart{ display:flex; align-items:flex-end; gap:6px; height:150px; margin-top:6px; padding:0 2px; }
+  .jbar{ flex:1; display:flex; flex-direction:column; justify-content:flex-end; align-items:center; height:100%; gap:6px; }
+  .jbar-fill{ width:78%; background:linear-gradient(var(--vermelho-vivo), var(--vermelho)); border-radius:7px 7px 0 0; min-height:6px; transition:height .4s cubic-bezier(.2,.8,.2,1); }
+  .jbar-lab{ font-weight:800; font-size:.72rem; color:var(--tinta-suave); }
+
+  /* ---------- Frações ---------- */
+  .frac{ display:inline-flex; flex-direction:column; align-items:center; vertical-align:middle; font-family:'Fredoka',sans-serif; font-weight:600; line-height:1.05; margin:0 2px; }
+  .frac .num{ padding:0 6px 2px; border-bottom:3px solid var(--vermelho); }
+  .frac .den{ padding:2px 6px 0; }
+  .opbig{ font-family:'Fredoka',sans-serif; color:var(--vermelho); font-size:1.4rem; vertical-align:middle; margin:0 6px; }
+
+  .bar{ display:flex; border:2px solid var(--vermelho); border-radius:10px; overflow:hidden; margin:8px 0; box-shadow:var(--sombra-suave); }
+  .bar span{ flex:1; height:40px; border-right:1px solid var(--rosa-forte); }
+  .bar span:last-child{ border-right:none; }
+  .bar span.on{ background:var(--vermelho); }
+  .barlbl{ font-weight:800; color:var(--tinta-suave); font-size:.86rem; }
+
+  .areamodel{ display:grid; gap:2px; max-width:200px; margin:10px 0; border:3px solid var(--vinho); border-radius:8px; overflow:hidden; }
+  .areamodel span{ aspect-ratio:1; background:var(--branco); }
+  .areamodel span.one{ background:var(--rosa); }
+  .areamodel span.both{ background:var(--vermelho); }
+  .modelkey{ display:flex; gap:14px; flex-wrap:wrap; font-weight:700; font-size:.82rem; color:var(--tinta-suave); margin-top:4px; }
+  .modelkey i{ display:inline-block; width:14px; height:14px; border-radius:4px; vertical-align:-2px; margin-right:5px; border:1px solid var(--linha); }
+
+  .flip{ display:flex; align-items:center; gap:14px; justify-content:center; margin:12px 0; flex-wrap:wrap; }
+  .tile{ background:var(--rosa); border:2px solid var(--rosa-forte); border-radius:12px; padding:10px 14px; }
+  .arrow{ font-family:'Fredoka',sans-serif; color:var(--vermelho); font-weight:600; text-align:center; }
+  .arrow small{ display:block; font-family:'Nunito',sans-serif; font-weight:800; font-size:.68rem; text-transform:uppercase; letter-spacing:.05em; }
+  .tile.alvo{ background:var(--vinho); color:#fff; border-color:var(--vinho); }
+  .tile.alvo .frac .num{ border-color:#ffd9d9; }
+
+  /* ---------- Sólidos 3D ---------- */
+  .solido-wrap{ display:grid; grid-template-columns: 1fr .9fr; gap:24px; align-items:center; }
+  .scene{
+    position:relative; min-height:340px; display:flex; align-items:center; justify-content:center;
+    perspective:1000px; perspective-origin:50% 42%;
+    background:
+      radial-gradient(120% 90% at 50% 8%, #fff, var(--papel) 70%);
+    border:2px solid var(--linha); border-radius:var(--r-grande);
+    overflow:hidden; touch-action:none; cursor:grab;
+    background-image:
+      linear-gradient(var(--grade) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grade) 1px, transparent 1px),
+      radial-gradient(120% 90% at 50% 8%, #ffffff, var(--papel) 70%);
+    background-size: 22px 22px, 22px 22px, 100% 100%;
+  }
+  .scene.is-grabbing{ cursor:grabbing; }
+  .shadow{
+    position:absolute; bottom:34px; left:50%; transform:translateX(-50%);
+    width:60%; height:30px; background:radial-gradient(closest-side, rgba(125,13,18,.32), transparent 75%);
+    filter:blur(3px); border-radius:50%;
+  }
+
+  .solid{
+    --c:3; --l:3; --a:3;
+    --upx: clamp(26px, 6vw, 38px);
+    position:relative; width:0; height:0;
+    transform-style:preserve-3d;
+    transform: rotateX(-24deg) rotateY(34deg);
+  }
+  .face{
+    position:absolute; top:50%; left:50%; box-sizing:border-box;
+    border:1.5px solid rgba(255,255,255,.78);
+    background-color:var(--vermelho);
+    background-image:
+      repeating-linear-gradient(to right, rgba(255,255,255,.42) 0, rgba(255,255,255,.42) 1px, transparent 1px, transparent var(--upx)),
+      repeating-linear-gradient(to bottom, rgba(255,255,255,.42) 0, rgba(255,255,255,.42) 1px, transparent 1px, transparent var(--upx));
+    box-shadow: inset 0 0 22px rgba(125,13,18,.22);
+  }
+  .f-front, .f-back{
+    width:calc(var(--c) * var(--upx)); height:calc(var(--a) * var(--upx));
+    margin-left:calc(var(--c) * var(--upx) * -0.5); margin-top:calc(var(--a) * var(--upx) * -0.5);
+  }
+  .f-right, .f-left{
+    width:calc(var(--l) * var(--upx)); height:calc(var(--a) * var(--upx));
+    margin-left:calc(var(--l) * var(--upx) * -0.5); margin-top:calc(var(--a) * var(--upx) * -0.5);
+  }
+  .f-top, .f-bottom{
+    width:calc(var(--c) * var(--upx)); height:calc(var(--l) * var(--upx));
+    margin-left:calc(var(--c) * var(--upx) * -0.5); margin-top:calc(var(--l) * var(--upx) * -0.5);
+  }
+  .f-front { transform: translateZ(calc(var(--l) * var(--upx) * 0.5)); background-color:#de2a30; }
+  .f-back  { transform: rotateY(180deg) translateZ(calc(var(--l) * var(--upx) * 0.5)); background-color:#a3161c; }
+  .f-right { transform: rotateY(90deg)  translateZ(calc(var(--c) * var(--upx) * 0.5)); background-color:#c11d24; }
+  .f-left  { transform: rotateY(-90deg) translateZ(calc(var(--c) * var(--upx) * 0.5)); background-color:#a3161c; }
+  .f-top   { transform: rotateX(90deg)  translateZ(calc(var(--a) * var(--upx) * 0.5)); background-color:#f0494a; }
+  .f-bottom{ transform: rotateX(-90deg) translateZ(calc(var(--a) * var(--upx) * 0.5)); background-color:#8f1218; }
+
+  .controles{ display:grid; gap:14px; }
+  .ctrl{ display:flex; flex-direction:column; gap:4px; }
+  .ctrl label{ font-weight:800; display:flex; justify-content:space-between; font-size:.95rem; }
+  .ctrl label b{ color:var(--vermelho); font-family:'Fredoka',sans-serif; }
+  .btns{ display:flex; gap:8px; flex-wrap:wrap; }
+  .btn{
+    font-family:'Nunito',sans-serif; font-weight:800; font-size:.88rem;
+    border:2px solid var(--linha); background:var(--branco); color:var(--tinta);
+    padding:8px 13px; border-radius:11px; cursor:pointer; transition:all .16s;
+  }
+  .btn:hover{ border-color:var(--vermelho); color:var(--vermelho); }
+  .btn.on{ background:var(--vermelho); color:#fff; border-color:var(--vermelho); }
+  .hintdrag{ font-weight:700; font-size:.82rem; color:var(--tinta-suave); display:flex; align-items:center; gap:7px; }
+  .hintdrag::before{ content:"↻"; color:var(--vermelho); font-size:1.1rem; }
+
+  .volbox{
+    background:linear-gradient(145deg, var(--vinho), #b21820); color:#fff;
+    border-radius:var(--r-medio); padding:16px 18px; box-shadow:var(--sombra); text-align:center;
+  }
+  .volbox .expr{ font-family:'Fredoka',sans-serif; font-size:1.35rem; }
+  .volbox .total{ font-family:'Fredoka',sans-serif; font-size:2.2rem; line-height:1; margin-top:4px; }
+  .volbox .total b{ color:#ffd9d9; }
+  .volbox small{ display:block; opacity:.85; font-weight:700; margin-top:6px; font-size:.82rem; }
+
+  .dia{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:4px; }
+  .diacard{ background:var(--papel); border:2px solid var(--linha); border-radius:var(--r-medio); padding:16px; display:flex; gap:14px; align-items:flex-start; }
+  .diacard .emo{ font-size:2.1rem; line-height:1; }
+  .diacard h4{ font-family:'Fredoka',sans-serif; color:var(--vinho); font-size:1.05rem; margin-bottom:3px; }
+  .diacard p{ margin:0; font-weight:600; font-size:.92rem; }
+
+  /* ---------------- Rodapé ---------------- */
+  footer.rodape{
+    background:var(--vinho); color:#fff; margin-top:30px;
+    border-top:6px solid var(--vermelho-vivo);
+  }
+  .rodape-in{ padding:38px 0; text-align:center; }
+  .rodape .logo{ margin:0 auto 14px; }
+  .rodape h3{ font-size:1.5rem; }
+  .rodape p{ opacity:.85; font-weight:600; max-width:48ch; margin:8px auto 0; }
+  .rodape .assina{ margin-top:18px; font-family:'Fredoka',sans-serif; font-size:1.2rem; }
+  .rodape .assina span{ display:block; font-family:'Nunito',sans-serif; font-weight:700; font-size:.78rem; opacity:.7; letter-spacing:.08em; text-transform:uppercase; }
+
+  /* ---------------- Animação de entrada ---------------- */
+  .reveal{ opacity:0; transform:translateY(22px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.show{ opacity:1; transform:none; }
+
+  /* ---------------- Responsivo ---------------- */
+  @media (max-width: 860px){
+    .hero-grid{ grid-template-columns:1fr; }
+    .hero-cube{ order:-1; }
+    .grid2, .grid3, .solido-wrap, .duo, .dia{ grid-template-columns:1fr; }
+    nav.menu{ display:none; }
+    .cab .num{ font-size:2rem; }
+  }
+  @media (max-width: 520px){
+    .pleg .pill{ min-width:72px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    .reveal{ opacity:1; transform:none; transition:none; }
+    .jbar-fill{ transition:none; }
+    .pgrid span{ transition:none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= CABEÇALHO ================= -->
+<header class="topo">
+  <div class="wrap topo-in">
+    <div class="marca">
+      <div class="logo">6º</div>
+      <div>
+        <b>Matemática</b>
+        <span>Caderno de revisão</span>
+      </div>
+    </div>
+    <nav class="menu" aria-label="Seções da revisão">
+      <a href="#porcentagem">Porcentagem</a>
+      <a href="#juros">Juros simples</a>
+      <a href="#fracoes">Frações</a>
+      <a href="#volume">Volume</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">6º ano · Ensino Fundamental</span>
+      <h1>Revisão de <em>Matemática</em></h1>
+      <p class="sub">Tudo que você precisa para revisar antes da prova: porcentagem, juros simples, operações com frações e o volume dos sólidos — com exemplos resolvidos e modelos 3D para você girar e explorar.</p>
+
+      <div class="prof">
+        <span class="av">JL</span>
+        <div>
+          <small>Professor</small>
+          Jardel A. Leite
+        </div>
+      </div>
+
+      <div class="chips">
+        <div class="chip"><i>%</i> Porcentagem</div>
+        <div class="chip"><i>$</i> Juros simples</div>
+        <div class="chip"><i>⁄</i> Frações</div>
+        <div class="chip"><i>▣</i> Volume 3D</div>
+      </div>
+    </div>
+
+    <div class="hero-cube">
+      <div class="scene" id="hero-scene" style="min-height:280px; border:none; background:none;">
+        <div class="shadow"></div>
+        <div class="solid" id="hero-solid" style="--c:3; --l:3; --a:3; --upx:clamp(30px,9vw,46px);">
+          <div class="face f-front"></div>
+          <div class="face f-back"></div>
+          <div class="face f-right"></div>
+          <div class="face f-left"></div>
+          <div class="face f-top"></div>
+          <div class="face f-bottom"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 1. PORCENTAGEM ================= -->
+<section class="bloco" id="porcentagem">
+  <div class="wrap">
+    <div class="cab reveal">
+      <div class="num">01</div>
+      <div class="ttl">
+        <h2>Porcentagem</h2>
+        <p>Uma parte de cada 100</p>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="card reveal">
+        <p class="lead">Porcentagem é um jeito de mostrar uma parte de um todo dividido em <strong>100 partes iguais</strong>. O símbolo <strong>%</strong> quer dizer "por cento", ou seja, "dividido por 100".</p>
+        <p>Toda porcentagem pode virar uma <strong>fração</strong> de denominador 100 e também um <strong>número decimal</strong>. Veja a equivalência abaixo e mexa no controle para visualizar:</p>
+
+        <table class="tbl">
+          <tr><th>Porcentagem</th><th>Fração</th><th>Decimal</th></tr>
+          <tr><td>10%</td><td>10/100 = 1/10</td><td>0,10</td></tr>
+          <tr><td>25%</td><td>25/100 = 1/4</td><td>0,25</td></tr>
+          <tr><td>50%</td><td>50/100 = 1/2</td><td>0,50</td></tr>
+          <tr><td>75%</td><td>75/100 = 3/4</td><td>0,75</td></tr>
+          <tr><td>100%</td><td>100/100 = 1</td><td>1,00</td></tr>
+        </table>
+      </div>
+
+      <div class="card reveal">
+        <h3 class="mini">Visualize <span class="tag">arraste</span></h3>
+        <div class="pgrid" id="p-grid" aria-hidden="true"></div>
+        <div class="pleg">
+          <div class="pill"><b id="p-pct">30%</b><small>porcento</small></div>
+          <div class="pill"><b id="p-frac">30/100</b><small>fração</small></div>
+          <div class="pill"><b id="p-dec">0,30</b><small>decimal</small></div>
+        </div>
+        <div class="slider">
+          <label for="p-slider"><span>Quantos de 100?</span></label>
+          <input type="range" id="p-slider" min="0" max="100" value="30" aria-label="Porcentagem de 0 a 100">
+        </div>
+      </div>
+    </div>
+
+    <div class="grid2" style="margin-top:22px;">
+      <div class="card reveal">
+        <h3 class="mini">Como calcular X% de um valor</h3>
+        <p>Transforme a porcentagem em decimal (divida por 100) e <strong>multiplique</strong> pelo valor.</p>
+        <div class="formula">X% de N = <b>X⁄100</b> × N</div>
+
+        <div class="ex">
+          <div class="tt">Desconto na blusa</div>
+          <div class="passo">Uma blusa custa R$ 60,00 e está com <strong>30% de desconto</strong>. Qual é o desconto?</div>
+          <div class="passo">30% de 60 = 0,30 × 60 = <strong>18</strong></div>
+          <div class="passo">Preço final: 60 - 18 = 42</div>
+          <span class="res">Desconto = R$ 18,00 · Paga R$ 42,00</span>
+        </div>
+
+        <div class="ex">
+          <div class="tt">A excursão da turma</div>
+          <div class="passo">Numa turma de 40 alunos, <strong>25%</strong> foram à excursão.</div>
+          <div class="passo">25% de 40 = 0,25 × 40 = 10 &nbsp;(ou 1/4 de 40)</div>
+          <span class="res">10 alunos foram</span>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <h3 class="mini">Calculadora de porcentagem <span class="tag">teste</span></h3>
+        <p>Digite um valor e a porcentagem para ver a conta passo a passo.</p>
+        <div class="calc">
+          <div class="duo">
+            <div class="campo"><label for="pc-val">Valor</label><input type="number" id="pc-val" value="80" min="0" step="any" inputmode="decimal"></div>
+            <div class="campo"><label for="pc-pct">Porcentagem (%)</label><input type="number" id="pc-pct" value="20" step="any" inputmode="decimal"></div>
+          </div>
+          <div class="saida">
+            <div class="big" id="pc-out">16</div>
+            <div class="steps" id="pc-steps"></div>
+          </div>
+        </div>
+        <div class="nota"><b>Dica:</b> 10% é só dividir por 10. 50% é a metade. 25% é a quarta parte (dividir por 4).</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 2. JUROS SIMPLES ================= -->
+<section class="bloco" id="juros">
+  <div class="wrap">
+    <div class="cab reveal">
+      <div class="num">02</div>
+      <div class="ttl">
+        <h2>Juros simples</h2>
+        <p>O preço de usar o dinheiro</p>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="card reveal">
+        <p class="lead">Juro é o valor que se paga (ou se recebe) pelo uso do dinheiro durante um tempo. No <strong>juro simples</strong>, ele é sempre calculado sobre o <strong>valor inicial</strong> — por isso o ganho é igual em cada período.</p>
+
+        <table class="tbl">
+          <tr><th>Símbolo</th><th>O que é</th></tr>
+          <tr><td>C</td><td>Capital — valor inicial</td></tr>
+          <tr><td>i</td><td>Taxa — porcentagem por período</td></tr>
+          <tr><td>t</td><td>Tempo — número de períodos</td></tr>
+          <tr><td>J</td><td>Juro — valor dos juros</td></tr>
+          <tr><td>M</td><td>Montante — capital + juros</td></tr>
+        </table>
+
+        <div class="formula">J = C × i × t <small>(a taxa i entra em decimal: 5% = 0,05)</small></div>
+        <div class="formula" style="font-size:1.3rem;">M = C + J <small>o montante é o total no final</small></div>
+      </div>
+
+      <div class="card reveal">
+        <h3 class="mini">Calculadora de juros <span class="tag">teste</span></h3>
+        <div class="calc">
+          <div class="campo"><label for="j-c">Capital — R$</label><input type="number" id="j-c" value="200" min="0" step="any" inputmode="decimal"></div>
+          <div class="duo">
+            <div class="campo"><label for="j-i">Taxa ao mês (%)</label><input type="number" id="j-i" value="5" min="0" step="any" inputmode="decimal"></div>
+            <div class="campo"><label for="j-t">Tempo (meses)</label><input type="number" id="j-t" value="3" min="1" max="12" step="1" inputmode="numeric"></div>
+          </div>
+          <div class="duo">
+            <div class="saida"><small style="opacity:.85;font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:.7rem;">Juros</small><div class="big" id="j-out">R$ 30,00</div></div>
+            <div class="saida" style="background:linear-gradient(145deg,#b21820,var(--vermelho));"><small style="opacity:.9;font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:.7rem;">Montante</small><div class="big" id="m-out">R$ 230,00</div></div>
+          </div>
+          <div class="steps" id="j-steps" style="color:var(--tinta);font-weight:700;font-size:.92rem;"></div>
+          <div>
+            <p class="barlbl" style="margin:0 0 6px;">Montante mês a mês (cresce sempre o mesmo valor):</p>
+            <div class="jchart" id="j-chart" aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card reveal" style="margin-top:22px;">
+      <h3 class="mini">Exemplos resolvidos</h3>
+      <div class="grid2">
+        <div class="ex" style="margin-top:0;">
+          <div class="tt">João aplicou e ganhou</div>
+          <div class="passo">João guardou <strong>R$ 200,00</strong> a juros simples de <strong>5% ao mês</strong>, durante <strong>3 meses</strong>.</div>
+          <div class="passo">J = C × i × t = 200 × 0,05 × 3 = <strong>30</strong></div>
+          <div class="passo">M = C + J = 200 + 30 = 230</div>
+          <span class="res">Recebe R$ 230,00 no final</span>
+        </div>
+        <div class="ex" style="margin-top:0;">
+          <div class="tt">Maria pegou emprestado</div>
+          <div class="passo">Maria pegou <strong>R$ 500,00</strong> a <strong>2% ao mês</strong> por <strong>4 meses</strong>.</div>
+          <div class="passo">J = 500 × 0,02 × 4 = <strong>40</strong></div>
+          <div class="passo">M = 500 + 40 = 540</div>
+          <span class="res">Vai pagar R$ 540,00</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 3. FRAÇÕES ================= -->
+<section class="bloco" id="fracoes">
+  <div class="wrap">
+    <div class="cab reveal">
+      <div class="num">03</div>
+      <div class="ttl">
+        <h2>Operações com frações</h2>
+        <p>Adição, multiplicação e divisão</p>
+      </div>
+    </div>
+
+    <div class="card reveal" style="margin-bottom:22px;">
+      <p class="lead" style="margin:0;">Lembre que em uma fração o número de cima é o <strong>numerador</strong> (quantas partes temos) e o de baixo é o <strong>denominador</strong> (em quantas partes o todo foi dividido): <span class="frac"><span class="num">3</span><span class="den">4</span></span> são 3 partes de um inteiro dividido em 4.</p>
+    </div>
+
+    <div class="grid3">
+
+      <!-- Adição -->
+      <div class="card reveal">
+        <h3 class="mini">Adição <span class="tag">+</span></h3>
+        <p><strong>Mesmo denominador:</strong> soma os numeradores e mantém o denominador.</p>
+        <div style="text-align:center; font-size:1.15rem; margin:6px 0;">
+          <span class="frac"><span class="num">2</span><span class="den">5</span></span>
+          <span class="opbig">+</span>
+          <span class="frac"><span class="num">1</span><span class="den">5</span></span>
+          <span class="opbig">=</span>
+          <span class="frac"><span class="num">3</span><span class="den">5</span></span>
+        </div>
+        <div class="bar" data-segs="5" data-on="3"></div>
+
+        <p style="margin-top:14px;"><strong>Denominadores diferentes:</strong> primeiro deixe o mesmo denominador (use o m.m.c.), depois some.</p>
+        <div style="text-align:center; font-size:1.15rem; margin:6px 0;">
+          <span class="frac"><span class="num">1</span><span class="den">2</span></span>
+          <span class="opbig">+</span>
+          <span class="frac"><span class="num">1</span><span class="den">3</span></span>
+          <span class="opbig">=</span>
+          <span class="frac"><span class="num">3</span><span class="den">6</span></span>
+          <span class="opbig">+</span>
+          <span class="frac"><span class="num">2</span><span class="den">6</span></span>
+          <span class="opbig">=</span>
+          <span class="frac"><span class="num">5</span><span class="den">6</span></span>
+        </div>
+        <div class="barlbl">1/2 vira 3/6</div>
+        <div class="bar" data-segs="6" data-on="3"></div>
+        <div class="barlbl">1/3 vira 2/6 &nbsp;→&nbsp; juntos: 5/6</div>
+        <div class="bar" data-segs="6" data-on="5"></div>
+      </div>
+
+      <!-- Multiplicação -->
+      <div class="card reveal">
+        <h3 class="mini">Multiplicação <span class="tag">×</span></h3>
+        <p>Multiplique <strong>numerador com numerador</strong> e <strong>denominador com denominador</strong>. Não precisa de denominador comum!</p>
+        <div style="text-align:center; font-size:1.15rem; margin:6px 0;">
+          <span class="frac"><span class="num">2</span><span class="den">3</span></span>
+          <span class="opbig">×</span>
+          <span class="frac"><span class="num">4</span><span class="den">5</span></span>
+          <span class="opbig">=</span>
+          <span class="frac"><span class="num">2×4</span><span class="den">3×5</span></span>
+          <span class="opbig">=</span>
+          <span class="frac"><span class="num">8</span><span class="den">15</span></span>
+        </div>
+        <p class="barlbl">No modelo de área, 2/3 na horizontal e 4/5 na vertical: a parte mais escura é o resultado.</p>
+        <div class="areamodel" data-cols="3" data-rows="5" data-fcols="2" data-frows="4"></div>
+        <div class="modelkey">
+          <span><i style="background:var(--vermelho);"></i>resultado (8/15)</span>
+          <span><i style="background:var(--rosa);"></i>um fator só</span>
+        </div>
+        <div class="nota" style="margin-top:14px;"><b>Lembre:</b> sempre que der, <strong>simplifique</strong> a fração final.</div>
+      </div>
+
+      <!-- Divisão -->
+      <div class="card reveal">
+        <h3 class="mini">Divisão <span class="tag">÷</span></h3>
+        <p>Regra de ouro: <strong>conserva, inverte e multiplica</strong>. Repita a primeira fração e multiplique pelo <strong>inverso</strong> da segunda.</p>
+
+        <div class="flip">
+          <div class="tile"><span class="frac"><span class="num">3</span><span class="den">4</span></span></div>
+          <div class="arrow"><small>inverte</small>→</div>
+          <div class="tile alvo"><span class="frac"><span class="num">4</span><span class="den">3</span></span></div>
+        </div>
+
+        <div style="text-align:center; font-size:1.12rem; margin:10px 0;">
+          <span class="frac"><span class="num">1</span><span class="den">2</span></span>
+          <span class="opbig">÷</span>
+          <span class="frac"><span class="num">3</span><span class="den">4</span></span>
+          <span class="opbig">=</span>
+          <span class="frac"><span class="num">1</span><span class="den">2</span></span>
+          <span class="opbig">×</span>
+          <span class="frac"><span class="num">4</span><span class="den">3</span></span>
+        </div>
+        <div style="text-align:center; font-size:1.12rem; margin:6px 0;">
+          <span class="opbig" style="margin:0;">=</span>
+          <span class="frac"><span class="num">4</span><span class="den">6</span></span>
+          <span class="opbig">=</span>
+          <span class="frac"><span class="num">2</span><span class="den">3</span></span>
+        </div>
+        <div class="nota"><b>O inverso</b> de uma fração é ela "de cabeça para baixo": o inverso de 3/4 é 4/3.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= 4. VOLUME ================= -->
+<section class="bloco" id="volume">
+  <div class="wrap">
+    <div class="cab reveal">
+      <div class="num">04</div>
+      <div class="ttl">
+        <h2>Volume de sólidos</h2>
+        <p>Cubo e paralelepípedo</p>
+      </div>
+    </div>
+
+    <div class="card reveal" style="margin-bottom:22px;">
+      <p class="lead">Volume é a quantidade de <strong>espaço</strong> que um objeto ocupa. Medimos em <strong>unidades cúbicas</strong> (cm³, m³...). A ideia central é simples: o volume é <strong>quantos cubinhos de 1 unidade cabem dentro do sólido</strong>. Gire os modelos abaixo e conte os quadradinhos das faces para enxergar isso!</p>
+    </div>
+
+    <!-- CUBO -->
+    <div class="card reveal" style="margin-bottom:22px;">
+      <h3 class="mini">O cubo <span class="tag">3D · gire</span></h3>
+      <div class="solido-wrap" id="w-cubo" data-mode="cube">
+        <div class="scene">
+          <div class="shadow"></div>
+          <div class="solid" style="--c:3; --l:3; --a:3;">
+            <div class="face f-front"></div>
+            <div class="face f-back"></div>
+            <div class="face f-right"></div>
+            <div class="face f-left"></div>
+            <div class="face f-top"></div>
+            <div class="face f-bottom"></div>
+          </div>
+        </div>
+
+        <div class="controles">
+          <p style="margin:0 0 2px;">No cubo, <strong>todas as arestas são iguais</strong>. Por isso o volume é a aresta multiplicada por ela mesma três vezes.</p>
+          <div class="formula" style="font-size:1.4rem; margin:4px 0 8px;">V = a × a × a = <b>a³</b></div>
+
+          <div class="ctrl">
+            <label for="cb-a">Aresta (a) <b><span data-label="c">3</span> u</b></label>
+            <input type="range" id="cb-a" min="1" max="5" value="3" step="1" data-keys="c,l,a" aria-label="Aresta do cubo">
+          </div>
+
+          <div class="volbox">
+            <div class="expr">V = <span data-expr>3 × 3 × 3</span></div>
+            <div class="total"><b data-vol>27</b> u³</div>
+            <small>são <span data-vol>27</span> cubinhos de 1 unidade</small>
+          </div>
+
+          <div class="btns">
+            <button class="btn" data-rot="-30" type="button">↺ Girar</button>
+            <button class="btn" data-rot="30" type="button">Girar ↻</button>
+            <button class="btn" data-reset type="button">Reposicionar</button>
+            <button class="btn" data-auto type="button">Girar sozinho</button>
+          </div>
+          <div class="hintdrag">Arraste o cubo para girar em qualquer direção</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PARALELEPÍPEDO -->
+    <div class="card reveal" style="margin-bottom:22px;">
+      <h3 class="mini">O paralelepípedo <span class="tag">3D · gire</span></h3>
+      <div class="solido-wrap" id="w-bloco" data-mode="box">
+        <div class="scene">
+          <div class="shadow"></div>
+          <div class="solid" style="--c:4; --l:3; --a:2;">
+            <div class="face f-front"></div>
+            <div class="face f-back"></div>
+            <div class="face f-right"></div>
+            <div class="face f-left"></div>
+            <div class="face f-top"></div>
+            <div class="face f-bottom"></div>
+          </div>
+        </div>
+
+        <div class="controles">
+          <p style="margin:0 0 2px;">No paralelepípedo (bloco retangular) multiplicamos as três medidas. Dá no mesmo que calcular a <strong>área da base</strong> (c × l) e multiplicar pela <strong>altura</strong> — como empilhar camadas.</p>
+          <div class="formula" style="font-size:1.35rem; margin:4px 0 8px;">V = c × l × a</div>
+
+          <div class="ctrl">
+            <label for="bl-c">Comprimento (c) <b><span data-label="c">4</span> u</b></label>
+            <input type="range" id="bl-c" min="1" max="5" value="4" step="1" data-keys="c" aria-label="Comprimento">
+          </div>
+          <div class="ctrl">
+            <label for="bl-l">Largura (l) <b><span data-label="l">3</span> u</b></label>
+            <input type="range" id="bl-l" min="1" max="5" value="3" step="1" data-keys="l" aria-label="Largura">
+          </div>
+          <div class="ctrl">
+            <label for="bl-a">Altura (a) <b><span data-label="a">2</span> u</b></label>
+            <input type="range" id="bl-a" min="1" max="5" value="2" step="1" data-keys="a" aria-label="Altura">
+          </div>
+
+          <div class="volbox">
+            <div class="expr">V = <span data-expr>4 × 3 × 2</span></div>
+            <div class="total"><b data-vol>24</b> u³</div>
+            <small>base <span data-base>12</span> &nbsp;×&nbsp; <span data-layers>2</span> camadas</small>
+          </div>
+
+          <div class="btns">
+            <button class="btn" data-rot="-30" type="button">↺ Girar</button>
+            <button class="btn" data-rot="30" type="button">Girar ↻</button>
+            <button class="btn" data-reset type="button">Reposicionar</button>
+            <button class="btn" data-auto type="button">Girar sozinho</button>
+          </div>
+          <div class="hintdrag">Arraste o bloco para girar em qualquer direção</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- exemplos resolvidos + dia a dia -->
+    <div class="grid2">
+      <div class="card reveal">
+        <h3 class="mini">Exemplos resolvidos</h3>
+        <div class="ex" style="margin-top:0;">
+          <div class="tt">Cubo de 3 cm</div>
+          <div class="passo">Um cubo tem aresta de <strong>3 cm</strong>.</div>
+          <div class="passo">V = 3 × 3 × 3 = 3³ = <strong>27</strong></div>
+          <span class="res">V = 27 cm³</span>
+        </div>
+        <div class="ex">
+          <div class="tt">Caixa 4 × 3 × 2</div>
+          <div class="passo">Uma caixa mede <strong>4 cm</strong> de comprimento, <strong>3 cm</strong> de largura e <strong>2 cm</strong> de altura.</div>
+          <div class="passo">Base: 4 × 3 = 12 &nbsp; → &nbsp; 12 × 2 camadas = <strong>24</strong></div>
+          <span class="res">V = 24 cm³</span>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <h3 class="mini">No dia a dia</h3>
+        <div class="dia">
+          <div class="diacard">
+            <div class="emo">🎲</div>
+            <div><h4>Dado</h4><p>Todos os lados iguais: é um <strong>cubo</strong>. V = a³.</p></div>
+          </div>
+          <div class="diacard">
+            <div class="emo">📦</div>
+            <div><h4>Caixa de sapato</h4><p>Comprimento, largura e altura diferentes: <strong>paralelepípedo</strong>.</p></div>
+          </div>
+          <div class="diacard">
+            <div class="emo">🧊</div>
+            <div><h4>Cubo de gelo</h4><p>Forminha cúbica: conte os cubinhos de 1 cm que cabem dentro.</p></div>
+          </div>
+          <div class="diacard">
+            <div class="emo">🐠</div>
+            <div><h4>Aquário</h4><p>Para saber quanta água cabe, calcule c × l × a.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RODAPÉ ================= -->
+<footer class="rodape">
+  <div class="wrap rodape-in">
+    <div class="logo">6º</div>
+    <h3>Bons estudos!</h3>
+    <p>Releia os exemplos, refaça as contas no caderno e use os modelos 3D sempre que tiver dúvida sobre volume. Errar faz parte de aprender.</p>
+    <div class="assina">
+      <span>Material elaborado pelo professor</span>
+      Jardel A. Leite
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- Util: formatação pt-BR ---------- */
+  function fmt(n){
+    var r = Math.round(n * 100) / 100;
+    return r.toLocaleString('pt-BR', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+  }
+  function brl(n){
+    return 'R$ ' + (Math.round(n * 100) / 100).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+
+  /* ---------- Sólidos 3D ---------- */
+  function setupSolid(root, opts){
+    opts = opts || {};
+    var solid = root.querySelector('.solid');
+    var scene = root.querySelector('.scene');
+    if(!solid || !scene) return;
+
+    var baseRx = (opts.rx != null) ? opts.rx : -24;
+    var baseRy = (opts.ry != null) ? opts.ry : 34;
+    var rx = baseRx, ry = baseRy;
+    var auto = !!opts.auto && !reduce;
+    var rafId = null, last = null;
+
+    function apply(){ solid.style.transform = 'rotateX(' + rx.toFixed(2) + 'deg) rotateY(' + ry.toFixed(2) + 'deg)'; }
+
+    function loop(t){
+      if(!auto){ rafId = null; last = null; return; }
+      if(last === null) last = t;
+      var dt = (t - last) / 1000;
+      last = t;
+      ry += dt * 16;
+      if(ry >= 360) ry -= 360;
+      apply();
+      rafId = requestAnimationFrame(loop);
+    }
+    function startAuto(){ if(auto && rafId === null){ last = null; rafId = requestAnimationFrame(loop); } }
+    function setAuto(on){ auto = on; if(on){ startAuto(); } }
+
+    /* arrastar para girar */
+    var dragging = false, lx = 0, ly = 0;
+    function pt(e){
+      if(e.touches && e.touches[0]) return { x: e.touches[0].clientX, y: e.touches[0].clientY };
+      return { x: e.clientX, y: e.clientY };
+    }
+    function down(e){ dragging = true; var p = pt(e); lx = p.x; ly = p.y; scene.classList.add('is-grabbing'); }
+    function move(e){
+      if(!dragging) return;
+      var p = pt(e);
+      ry += (p.x - lx) * 0.55;
+      rx -= (p.y - ly) * 0.55;
+      if(rx > 85) rx = 85;
+      if(rx < -85) rx = -85;
+      lx = p.x; ly = p.y;
+      apply();
+      if(e.cancelable) e.preventDefault();
+    }
+    function up(){ if(dragging){ dragging = false; scene.classList.remove('is-grabbing'); } }
+    scene.addEventListener('pointerdown', down);
+    window.addEventListener('pointermove', move, { passive: false });
+    window.addEventListener('pointerup', up);
+    scene.addEventListener('pointercancel', up);
+
+    /* dimensões */
+    var state = { c: 3, l: 3, a: 3 };
+    function setVars(){
+      solid.style.setProperty('--c', String(state.c));
+      solid.style.setProperty('--l', String(state.l));
+      solid.style.setProperty('--a', String(state.a));
+    }
+    function readouts(){
+      var v = state.c * state.l * state.a;
+      var volEls = root.querySelectorAll('[data-vol]');
+      for(var k = 0; k < volEls.length; k++){ volEls[k].textContent = v; }
+      var exprEl = root.querySelector('[data-expr]');
+      if(exprEl){
+        if(opts.mode === 'cube'){ exprEl.textContent = state.c + ' \u00d7 ' + state.c + ' \u00d7 ' + state.c; }
+        else { exprEl.textContent = state.c + ' \u00d7 ' + state.l + ' \u00d7 ' + state.a; }
+      }
+      var baseEl = root.querySelector('[data-base]');
+      if(baseEl) baseEl.textContent = state.c * state.l;
+      var layEl = root.querySelector('[data-layers]');
+      if(layEl) layEl.textContent = state.a;
+    }
+
+    var inputs = root.querySelectorAll('input[type=range][data-keys]');
+    function readInput(inp){
+      var keys = inp.getAttribute('data-keys').split(',');
+      var val = parseInt(inp.value, 10);
+      for(var j = 0; j < keys.length; j++){
+        var key = keys[j];
+        state[key] = val;
+        var lbl = root.querySelector('[data-label="' + key + '"]');
+        if(lbl) lbl.textContent = val;
+      }
+    }
+    for(var i = 0; i < inputs.length; i++){
+      (function(inp){
+        inp.addEventListener('input', function(){ readInput(inp); setVars(); readouts(); });
+        readInput(inp);
+      })(inputs[i]);
+    }
+
+    /* botões */
+    var rotBtns = root.querySelectorAll('[data-rot]');
+    for(var b = 0; b < rotBtns.length; b++){
+      (function(btn){
+        btn.addEventListener('click', function(){ ry += parseFloat(btn.getAttribute('data-rot')); apply(); });
+      })(rotBtns[b]);
+    }
+    var resetBtn = root.querySelector('[data-reset]');
+    if(resetBtn) resetBtn.addEventListener('click', function(){ rx = baseRx; ry = baseRy; apply(); });
+    var autoBtn = root.querySelector('[data-auto]');
+    if(autoBtn){
+      autoBtn.setAttribute('aria-pressed', auto ? 'true' : 'false');
+      if(auto) autoBtn.classList.add('on');
+      autoBtn.addEventListener('click', function(){
+        setAuto(!auto);
+        autoBtn.setAttribute('aria-pressed', auto ? 'true' : 'false');
+        if(auto) autoBtn.classList.add('on'); else autoBtn.classList.remove('on');
+      });
+    }
+
+    setVars();
+    readouts();
+    apply();
+    startAuto();
+  }
+
+  /* inicia os três sólidos */
+  var heroScene = document.getElementById('hero-scene');
+  if(heroScene){ setupSolid({ querySelector: function(s){ return heroScene.querySelector(s); }, querySelectorAll: function(s){ return heroScene.querySelectorAll(s); } }, { mode: 'cube', auto: true, rx: -22, ry: 30 }); }
+  var wc = document.getElementById('w-cubo');
+  if(wc) setupSolid(wc, { mode: 'cube', auto: false });
+  var wb = document.getElementById('w-bloco');
+  if(wb) setupSolid(wb, { mode: 'box', auto: false });
+
+  /* ---------- Porcentagem: grade 10x10 ---------- */
+  var pgrid = document.getElementById('p-grid');
+  if(pgrid){
+    var cells = [];
+    for(var g = 0; g < 100; g++){ var sp = document.createElement('span'); pgrid.appendChild(sp); cells.push(sp); }
+    var ps = document.getElementById('p-slider');
+    function paintP(){
+      var n = parseInt(ps.value, 10);
+      for(var c = 0; c < 100; c++){
+        if(c < n) cells[c].classList.add('on'); else cells[c].classList.remove('on');
+      }
+      document.getElementById('p-pct').textContent = n + '%';
+      document.getElementById('p-frac').textContent = n + '/100';
+      document.getElementById('p-dec').textContent = (n / 100).toFixed(2).replace('.', ',');
+    }
+    ps.addEventListener('input', paintP);
+    paintP();
+  }
+
+  /* ---------- Calculadora de porcentagem ---------- */
+  var pcVal = document.getElementById('pc-val');
+  var pcPct = document.getElementById('pc-pct');
+  if(pcVal && pcPct){
+    var pcOut = document.getElementById('pc-out');
+    var pcSteps = document.getElementById('pc-steps');
+    function pcalc(){
+      var v = parseFloat(pcVal.value);
+      var p = parseFloat(pcPct.value);
+      if(isNaN(v) || isNaN(p)){
+        pcOut.textContent = '\u2014';
+        pcSteps.textContent = 'Preencha os dois campos.';
+        return;
+      }
+      var r = v * p / 100;
+      pcOut.textContent = fmt(r);
+      pcSteps.innerHTML = p + '% de ' + fmt(v) + ' = ' + (p / 100).toLocaleString('pt-BR', { maximumFractionDigits: 4 }) + ' \u00d7 ' + fmt(v) + ' = <strong>' + fmt(r) + '</strong>';
+    }
+    pcVal.addEventListener('input', pcalc);
+    pcPct.addEventListener('input', pcalc);
+    pcalc();
+  }
+
+  /* ---------- Calculadora de juros simples ---------- */
+  var jc = document.getElementById('j-c');
+  var ji = document.getElementById('j-i');
+  var jt = document.getElementById('j-t');
+  if(jc && ji && jt){
+    var jOut = document.getElementById('j-out');
+    var mOut = document.getElementById('m-out');
+    var jSteps = document.getElementById('j-steps');
+    var jChart = document.getElementById('j-chart');
+    function jcalc(){
+      var C = parseFloat(jc.value);
+      var iv = parseFloat(ji.value);
+      var t = parseInt(jt.value, 10);
+      if(isNaN(C) || isNaN(iv) || isNaN(t) || t < 1){
+        jOut.textContent = '\u2014'; mOut.textContent = '\u2014';
+        jSteps.textContent = 'Preencha capital, taxa e tempo.';
+        jChart.innerHTML = '';
+        return;
+      }
+      if(t > 12) t = 12;
+      var per = C * (iv / 100);
+      var J = per * t;
+      var M = C + J;
+      jOut.textContent = brl(J);
+      mOut.textContent = brl(M);
+      jSteps.innerHTML = 'J = ' + fmt(C) + ' \u00d7 ' + (iv / 100).toLocaleString('pt-BR', { maximumFractionDigits: 4 }) + ' \u00d7 ' + t + ' = <strong>' + brl(J) + '</strong> &nbsp;|&nbsp; cada m\u00eas rende ' + brl(per) + '.';
+      /* barras */
+      jChart.innerHTML = '';
+      var maxM = C + per * t;
+      if(maxM <= 0) maxM = 1;
+      for(var m = 1; m <= t; m++){
+        var mont = C + per * m;
+        var col = document.createElement('div'); col.className = 'jbar';
+        var fill = document.createElement('div'); fill.className = 'jbar-fill';
+        fill.style.height = (mont / maxM * 100) + '%';
+        var lab = document.createElement('span'); lab.className = 'jbar-lab';
+        lab.textContent = m + '\u00ba';
+        col.appendChild(fill); col.appendChild(lab);
+        jChart.appendChild(col);
+      }
+    }
+    jc.addEventListener('input', jcalc);
+    ji.addEventListener('input', jcalc);
+    jt.addEventListener('input', jcalc);
+    jcalc();
+  }
+
+  /* ---------- Barras de fração ---------- */
+  var bars = document.querySelectorAll('.bar[data-segs]');
+  for(var bi = 0; bi < bars.length; bi++){
+    var bar = bars[bi];
+    var segs = parseInt(bar.getAttribute('data-segs'), 10);
+    var on = parseInt(bar.getAttribute('data-on'), 10);
+    for(var s = 0; s < segs; s++){
+      var seg = document.createElement('span');
+      if(s < on) seg.className = 'on';
+      bar.appendChild(seg);
+    }
+  }
+
+  /* ---------- Modelo de área (multiplicação) ---------- */
+  var models = document.querySelectorAll('.areamodel');
+  for(var mi = 0; mi < models.length; mi++){
+    var el = models[mi];
+    var cols = parseInt(el.getAttribute('data-cols'), 10);
+    var rows = parseInt(el.getAttribute('data-rows'), 10);
+    var fc = parseInt(el.getAttribute('data-fcols'), 10);
+    var fr = parseInt(el.getAttribute('data-frows'), 10);
+    el.style.gridTemplateColumns = 'repeat(' + cols + ', 1fr)';
+    for(var r = 1; r <= rows; r++){
+      for(var c2 = 1; c2 <= cols; c2++){
+        var cell = document.createElement('span');
+        var inC = c2 <= fc, inR = r <= fr;
+        if(inC && inR) cell.className = 'both';
+        else if(inC || inR) cell.className = 'one';
+        el.appendChild(cell);
+      }
+    }
+  }
+
+  /* ---------- Revelar ao rolar + menu ativo ---------- */
+  var revs = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window && !reduce){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    for(var ri = 0; ri < revs.length; ri++){ io.observe(revs[ri]); }
+  } else {
+    for(var rj = 0; rj < revs.length; rj++){ revs[rj].classList.add('show'); }
+  }
+
+  var secs = document.querySelectorAll('section.bloco');
+  var links = document.querySelectorAll('nav.menu a');
+  if('IntersectionObserver' in window && links.length){
+    var navIo = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          var id = e.target.getAttribute('id');
+          for(var li = 0; li < links.length; li++){
+            var match = links[li].getAttribute('href') === '#' + id;
+            if(match) links[li].classList.add('ativo'); else links[li].classList.remove('ativo');
+          }
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    for(var si = 0; si < secs.length; si++){ navIo.observe(secs[si]); }
+  }
+})();
+</script>
+</body>
+</html>
