@@ -1,109 +1,224 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matemática - Tirando de Letra</title>
-    <style>
-        /* Estilos básicos (CSS) para a página */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f7f6;
-            margin: 0;
-            padding: 0;
-            color: #333;
-            text-align: center;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matemática - Tirando de Letra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+<style>
+  /* Variáveis de cores importadas do tema de revisão */
+  :root{
+    --vinho:#7d0d12;
+    --vermelho:#d11f27;
+    --vermelho-vivo:#ef3b3b;
+    --rosa:#ffe6e6;
+    --rosa-forte:#ffd0d0;
+    --papel:#fff7f6;
+    --branco:#ffffff;
+    --tinta:#2c2120;
+    --tinta-suave:#8a6f6d;
+    --linha:#f0d3d3;
+    --grade: rgba(209,31,39,.06);
+    --sombra: 0 14px 34px -18px rgba(125,13,18,.45);
+    --sombra-suave: 0 6px 16px -10px rgba(125,13,18,.4);
+    --r-grande: 22px;
+    --r-medio: 16px;
+    --r-pequeno: 11px;
+  }
 
-        header {
-            background-color: #2c3e50;
-            color: #ecf0f1;
-            padding: 40px 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    font-family:'Nunito', system-ui, sans-serif;
+    color:var(--tinta);
+    background-color:var(--papel);
+    background-image:
+      linear-gradient(var(--grade) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grade) 1px, transparent 1px);
+    background-size: 26px 26px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
 
-        h1 {
-            margin: 0;
-            font-size: 2.5em;
-            letter-spacing: 1px;
-        }
+  h1,h2,h3,h4{ font-family:'Fredoka', sans-serif; font-weight:600; line-height:1.12; margin:0; }
+  p{ margin:0 0 1em; }
+  strong{ font-weight:800; color:var(--vinho); }
+  a{ color:inherit; text-decoration: none; }
 
-        p.subtitle {
-            font-size: 1.2em;
-            margin-top: 10px;
-            font-weight: 300;
-            color: #bdc3c7;
-        }
+  .wrap{ width:min(1080px, 92vw); margin:0 auto; }
 
-        main {
-            padding: 50px 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
+  /* ---------------- Cabeçalho ---------------- */
+  header.topo{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,247,246,.86);
+    backdrop-filter:saturate(1.4) blur(10px);
+    -webkit-backdrop-filter:saturate(1.4) blur(10px);
+    border-bottom:2px solid var(--linha);
+  }
+  .topo-in{ display:flex; align-items:center; gap:14px; padding:12px 0; }
+  .marca{ display:flex; align-items:center; gap:11px; font-family:'Fredoka',sans-serif; font-weight:600; }
+  .logo{
+    width:42px; height:42px; border-radius:12px; flex:none;
+    background:linear-gradient(150deg, var(--vermelho-vivo), var(--vinho));
+    background-image:
+      linear-gradient(rgba(255,255,255,.32) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.32) 1px, transparent 1px),
+      linear-gradient(150deg, var(--vermelho-vivo), var(--vinho));
+    background-size: 10px 10px, 10px 10px, 100% 100%;
+    color:#fff; display:grid; place-items:center; font-size:1.4rem;
+    box-shadow: var(--sombra-suave);
+  }
+  .marca b{ font-weight:600; font-size:1.1rem; line-height:1; }
+  .marca span{ display:block; font-family:'Nunito',sans-serif; font-weight:700; font-size:.72rem; color:var(--tinta-suave); letter-spacing:.04em; text-transform:uppercase; }
+  nav.menu{ margin-left:auto; display:flex; gap:4px; flex-wrap:wrap; }
+  nav.menu a{
+    text-decoration:none; font-weight:700; font-size:.9rem; color:var(--tinta);
+    padding:7px 12px; border-radius:999px; transition:background .18s, color .18s;
+  }
+  nav.menu a:hover{ background:var(--rosa); color:var(--vinho); }
+  nav.menu a.destaque{ background:var(--vermelho); color:#fff; }
 
-        h2 {
-            color: #2980b9;
-            margin-bottom: 30px;
-        }
+  /* ---------------- Hero ---------------- */
+  .hero{ padding:60px 0 40px; text-align: center; }
+  .hero h1{ font-size:clamp(2.5rem, 6vw, 4rem); font-weight:700; letter-spacing:-.01em; color: var(--vinho); }
+  .hero h1 em{ font-style:normal; color:var(--vermelho); }
+  .hero .sub{ font-size:1.2rem; color:var(--tinta-suave); max-width:60ch; margin:16px auto 0; font-weight: 600; }
+  
+  .prof{
+    display:inline-flex; align-items:center; gap:11px; margin-top:30px;
+    background:var(--vinho); color:#fff; padding:9px 20px 9px 11px; border-radius:999px;
+    box-shadow:var(--sombra-suave); font-weight:700; text-align: left;
+  }
+  .prof .av{ width:36px; height:36px; border-radius:50%; background:#fff; color:var(--vinho); display:grid; place-items:center; font-family:'Fredoka',sans-serif; font-weight:600; font-size: 1.1rem;}
+  .prof small{ display:block; font-weight:700; font-size:.7rem; opacity:.8; letter-spacing:.06em; text-transform:uppercase; line-height:1; margin-bottom:2px; }
 
-        /* Container para os links das turmas */
-        .turmas-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
+  /* ---------------- Seção de Links/Cards ---------------- */
+  section.bloco{ padding:40px 0 60px; }
+  .cab{ display:flex; align-items:flex-end; gap:16px; margin-bottom:30px; border-bottom:3px solid var(--rosa-forte); padding-bottom:16px; justify-content: center; text-align: center; }
+  .cab .ttl h2{ font-size:clamp(1.6rem,4vw,2.2rem); color: var(--vinho); }
 
-        /* Estilo dos botões/links */
-        .turma-link {
-            display: inline-block;
-            background-color: #3498db;
-            color: white;
-            text-decoration: none;
-            font-size: 1.5em;
-            font-weight: bold;
-            padding: 30px 40px;
-            border-radius: 12px;
-            transition: background-color 0.3s, transform 0.2s;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            min-width: 120px;
-        }
+  .grid-cards{ display:grid; grid-template-columns:repeat(2, 1fr); gap:24px; max-width: 800px; margin: 0 auto; }
+  
+  .card-link{
+    background:var(--branco); border:2px solid var(--linha); border-radius:var(--r-grande);
+    padding:36px 26px; box-shadow:var(--sombra-suave); text-align: center;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+  }
+  .card-link:hover{
+    transform: translateY(-6px);
+    border-color: var(--vermelho);
+    box-shadow: var(--sombra);
+  }
+  .card-link .icone{
+    width: 60px; height: 60px; border-radius: 16px; background: var(--rosa); color: var(--vinho);
+    display: grid; place-items: center; font-family: 'Fredoka', sans-serif; font-size: 1.8rem; font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .card-link h3{ font-size: 1.8rem; color: var(--vermelho); margin-bottom: 6px; }
+  .card-link p{ margin: 0; color: var(--tinta-suave); font-weight: 700; font-size: 1rem; }
 
-        .turma-link:hover {
-            background-color: #2980b9;
-            transform: translateY(-5px);
-            box-shadow: 0 6px 10px rgba(0,0,0,0.15);
-        }
+  /* Card destaque para Atividades */
+  .card-link.destaque-card { border-color: var(--rosa-forte); background: linear-gradient(145deg, #fff, var(--papel)); }
+  .card-link.destaque-card .icone { background: var(--vermelho); color: #fff; }
 
-        footer {
-            margin-top: 50px;
-            padding: 20px;
-            background-color: #ecf0f1;
-            color: #7f8c8d;
-            font-size: 0.9em;
-        }
-    </style>
+  /* ---------------- Rodapé ---------------- */
+  footer.rodape{
+    background:var(--vinho); color:#fff; margin-top:40px;
+    border-top:6px solid var(--vermelho-vivo);
+  }
+  .rodape-in{ padding:38px 0; text-align:center; }
+  .rodape .logo{ margin:0 auto 14px; }
+  .rodape h3{ font-size:1.5rem; }
+  .rodape p{ opacity:.85; font-weight:600; max-width:48ch; margin:8px auto 0; }
+
+  /* ---------------- Responsivo ---------------- */
+  @media (max-width: 768px){
+    .grid-cards{ grid-template-columns:1fr; }
+    nav.menu{ display:none; }
+  }
+</style>
 </head>
 <body>
 
-    <header>
-        <h1>Matemática - Tirando de Letra</h1>
-        <p class="subtitle">Descomplicando os números para você gabaritar!</p>
-    </header>
+<header class="topo">
+  <div class="wrap topo-in">
+    <div class="marca">
+      <div class="logo">M</div>
+      <div>
+        <b>Matemática</b>
+        <span>Tirando de Letra</span>
+      </div>
+    </div>
+    <nav class="menu" aria-label="Menu principal">
+      <a href="#turmas">Turmas</a>
+      <a href="atividades.html" class="destaque">Atividades</a>
+    </nav>
+  </div>
+</header>
 
-    <main>
-        <h2>Escolha a sua turma para começar:</h2>
-        
-        <div class="turmas-container">
-            <a href="revisao-6.html" class="turma-link">6º Ano</a>
-            <a href="revisao-7.html" class="turma-link">7º Ano</a>
-            <a href="revisao-7.html" class="turma-link">9º Ano</a>
-        </div>
-    </main>
+<section class="hero">
+  <div class="wrap">
+    <h1>Matemática<br><em>Tirando de Letra</em></h1>
+    <p class="sub">Descomplicando os números, fórmulas e geometria para você gabaritar! Acesse os cadernos de revisão da sua turma ou pratique com as atividades.</p>
 
-    <footer>
-        <p>&copy; 2026 Matemática - Tirando de Letra. Todos os direitos reservados.</p>
-    </footer>
+    <div class="prof">
+      <span class="av">JL</span>
+      <div>
+        <small>Professor</small>
+        Jardel A. Leite
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bloco" id="turmas">
+  <div class="wrap">
+    <div class="cab">
+      <div class="ttl">
+        <h2>Escolha por onde começar:</h2>
+      </div>
+    </div>
+
+    <div class="grid-cards">
+      <a href="revisao-6.html" class="card-link">
+        <div class="icone">6º</div>
+        <h3>Revisão 6º Ano</h3>
+        <p>Caderno de estudos e resumos</p>
+      </a>
+
+      <a href="revisao-7.html" class="card-link">
+        <div class="icone">7º</div>
+        <h3>Revisão 7º Ano</h3>
+        <p>Caderno de estudos e resumos</p>
+      </a>
+
+      <a href="revisao-9.html" class="card-link">
+        <div class="icone">9º</div>
+        <h3>Revisão 9º Ano</h3>
+        <p>Equações, Bhaskara e Pitágoras</p>
+      </a>
+
+      <a href="atividades.html" class="card-link destaque-card">
+        <div class="icone">✎</div>
+        <h3>Atividades</h3>
+        <p>Exercícios e listas de fixação</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="rodape">
+  <div class="wrap rodape-in">
+    <div class="logo">M</div>
+    <h3>Matemática - Tirando de Letra</h3>
+    <p>&copy; 2026 Material elaborado pelo Professor Jardel A. Leite. Todos os direitos reservados.</p>
+  </div>
+</footer>
 
 </body>
 </html>
