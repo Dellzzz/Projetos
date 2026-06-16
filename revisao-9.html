@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revisão de Matemática · 9º ano — Prof. Jardel A. Leite</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --vinho:#7d0d12;
+    --vermelho:#d11f27;
+    --vermelho-vivo:#ef3b3b;
+    --rosa:#ffe6e6;
+    --rosa-forte:#ffd0d0;
+    --papel:#fff7f6;
+    --branco:#ffffff;
+    --tinta:#2c2120;
+    --tinta-suave:#8a6f6d;
+    --linha:#f0d3d3;
+    --grade: rgba(209,31,39,.06);
+    --sombra: 0 14px 34px -18px rgba(125,13,18,.45);
+    --sombra-suave: 0 6px 16px -10px rgba(125,13,18,.4);
+    --r-grande: 22px;
+    --r-medio: 16px;
+    --r-pequeno: 11px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    font-family:'Nunito', system-ui, sans-serif;
+    color:var(--tinta);
+    background-color:var(--papel);
+    background-image:
+      linear-gradient(var(--grade) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grade) 1px, transparent 1px);
+    background-size: 26px 26px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+
+  h1,h2,h3,h4{ font-family:'Fredoka', sans-serif; font-weight:600; line-height:1.12; margin:0; }
+  p{ margin:0 0 1em; }
+  strong{ font-weight:800; color:var(--vinho); }
+  a{ color:inherit; }
+
+  .wrap{ width:min(1080px, 92vw); margin:0 auto; }
+
+  /* ---------------- Cabeçalho ---------------- */
+  header.topo{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,247,246,.86);
+    backdrop-filter:saturate(1.4) blur(10px);
+    -webkit-backdrop-filter:saturate(1.4) blur(10px);
+    border-bottom:2px solid var(--linha);
+  }
+  .topo-in{ display:flex; align-items:center; gap:14px; padding:12px 0; }
+  .marca{ display:flex; align-items:center; gap:11px; font-family:'Fredoka',sans-serif; font-weight:600; }
+  .logo{
+    width:42px; height:42px; border-radius:12px; flex:none;
+    background:linear-gradient(150deg, var(--vermelho-vivo), var(--vinho));
+    background-image:
+      linear-gradient(rgba(255,255,255,.32) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.32) 1px, transparent 1px),
+      linear-gradient(150deg, var(--vermelho-vivo), var(--vinho));
+    background-size: 10px 10px, 10px 10px, 100% 100%;
+    color:#fff; display:grid; place-items:center; font-size:1.05rem;
+    box-shadow: var(--sombra-suave);
+  }
+  .marca b{ font-weight:600; font-size:1.05rem; line-height:1; }
+  .marca span{ display:block; font-family:'Nunito',sans-serif; font-weight:700; font-size:.72rem; color:var(--tinta-suave); letter-spacing:.04em; text-transform:uppercase; }
+  nav.menu{ margin-left:auto; display:flex; gap:4px; flex-wrap:wrap; }
+  nav.menu a{
+    text-decoration:none; font-weight:700; font-size:.9rem; color:var(--tinta);
+    padding:7px 12px; border-radius:999px; transition:background .18s, color .18s;
+  }
+  nav.menu a:hover{ background:var(--rosa); color:var(--vinho); }
+  nav.menu a.ativo{ background:var(--vermelho); color:#fff; }
+
+  /* ---------------- Hero ---------------- */
+  .hero{ padding:54px 0 30px; }
+  .hero-grid{ display:grid; grid-template-columns: 1.25fr .85fr; gap:34px; align-items:center; }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-weight:800; font-size:.78rem; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--vermelho); background:var(--branco); border:2px solid var(--rosa-forte);
+    padding:6px 13px; border-radius:999px; margin-bottom:18px;
+  }
+  .eyebrow::before{ content:""; width:9px; height:9px; border-radius:3px; background:var(--vermelho); }
+  .hero h1{ font-size:clamp(2.3rem, 6vw, 3.7rem); font-weight:700; letter-spacing:-.01em; }
+  .hero h1 em{ font-style:normal; color:var(--vermelho); }
+  .hero .sub{ font-size:1.12rem; color:var(--tinta); max-width:46ch; margin-top:14px; }
+  .prof{
+    display:inline-flex; align-items:center; gap:11px; margin-top:24px;
+    background:var(--vinho); color:#fff; padding:9px 16px 9px 11px; border-radius:999px;
+    box-shadow:var(--sombra-suave); font-weight:700;
+  }
+  .prof .av{ width:30px; height:30px; border-radius:50%; background:#fff; color:var(--vinho); display:grid; place-items:center; font-family:'Fredoka',sans-serif; font-weight:600; }
+  .prof small{ display:block; font-weight:700; font-size:.68rem; opacity:.8; letter-spacing:.06em; text-transform:uppercase; line-height:1; margin-bottom:2px; }
+
+  .chips{ display:flex; flex-wrap:wrap; gap:9px; margin-top:26px; }
+  .chip{ background:var(--branco); border:2px solid var(--linha); border-radius:12px; padding:9px 14px; font-weight:800; font-size:.88rem; display:flex; align-items:center; gap:9px; }
+  .chip i{ width:24px; height:22px; border-radius:7px; background:var(--rosa); color:var(--vinho); display:grid; place-items:center; font-style:normal; font-family:'Fredoka',sans-serif; font-size:.8rem; }
+
+  .hero-art{ display:grid; place-items:center; }
+  .artframe{
+    width:100%; max-width:370px; aspect-ratio: 1 / .72;
+    border:2px solid var(--linha); border-radius:var(--r-grande);
+    background-image:
+      linear-gradient(var(--grade) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grade) 1px, transparent 1px),
+      radial-gradient(120% 90% at 50% 6%, #fff, var(--papel) 72%);
+    background-size:22px 22px,22px 22px,100% 100%;
+    display:grid; place-items:center; box-shadow:var(--sombra-suave); overflow:hidden; padding:16px;
+  }
+  .artframe svg{ width:100%; height:auto; }
+
+  /* ---------------- Seções ---------------- */
+  section.bloco{ padding:40px 0; scroll-margin-top:84px; }
+  .cab{ display:flex; align-items:flex-end; gap:16px; margin-bottom:26px; border-bottom:3px solid var(--rosa-forte); padding-bottom:16px; }
+  .cab .num{ font-family:'Fredoka',sans-serif; font-weight:700; font-size:2.6rem; color:var(--vermelho); line-height:.8; }
+  .cab .ttl h2{ font-size:clamp(1.6rem,4vw,2.2rem); }
+  .cab .ttl p{ margin:4px 0 0; color:var(--tinta-suave); font-weight:700; font-size:.95rem; }
+
+  .card{
+    background:var(--branco); border:2px solid var(--linha); border-radius:var(--r-grande);
+    padding:26px; box-shadow:var(--sombra-suave);
+  }
+  .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+  .grid3{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+  .lead{ font-size:1.06rem; }
+
+  h3.mini{ font-size:1.2rem; color:var(--vinho); margin-bottom:10px; display:flex; align-items:center; gap:9px; }
+  h3.mini .tag{ font-size:.7rem; background:var(--vermelho); color:#fff; padding:3px 9px; border-radius:999px; font-family:'Nunito',sans-serif; font-weight:800; letter-spacing:.05em; text-transform:uppercase; }
+
+  /* destaque / fórmula */
+  .formula{
+    background:linear-gradient(145deg, var(--vinho), #b21820);
+    color:#fff; border-radius:var(--r-medio); padding:18px 22px; text-align:center;
+    font-family:'Fredoka',sans-serif; font-size:1.5rem; letter-spacing:.01em;
+    box-shadow:var(--sombra); margin:6px 0 14px;
+  }
+  .formula small{ display:block; font-family:'Nunito',sans-serif; font-weight:700; font-size:.82rem; opacity:.86; margin-top:6px; letter-spacing:.02em; }
+  .formula b{ color:#ffd9d9; }
+  .formula .frac{ display:inline-flex; flex-direction:column; align-items:center; vertical-align:middle; margin:0 4px; line-height:1.05; }
+  .formula .frac .top{ padding:0 8px 3px; border-bottom:3px solid #ffd9d9; }
+  .formula .frac .bot{ padding:3px 8px 0; }
+
+  .nota{
+    background:var(--rosa); border-left:6px solid var(--vermelho); border-radius:10px;
+    padding:13px 16px; margin:14px 0; font-weight:600;
+  }
+  .nota b{ color:var(--vinho); }
+
+  /* exemplo resolvido */
+  .ex{ background:var(--papel); border:2px dashed var(--rosa-forte); border-radius:var(--r-medio); padding:16px 18px; margin-top:14px; }
+  .ex .tt{ font-family:'Fredoka',sans-serif; font-weight:600; color:var(--vermelho); margin-bottom:6px; display:flex; align-items:center; gap:8px; }
+  .ex .tt::before{ content:"✎"; font-size:1.1rem; }
+  .passo{ margin:5px 0; }
+  .res{ display:inline-block; margin-top:8px; background:var(--vermelho); color:#fff; font-weight:800; padding:5px 13px; border-radius:9px; }
+
+  table.tbl{ width:100%; border-collapse:collapse; margin:8px 0 4px; font-weight:700; }
+  table.tbl th, table.tbl td{ border:2px solid var(--linha); padding:9px 10px; text-align:center; }
+  table.tbl th{ background:var(--vinho); color:#fff; font-family:'Fredoka',sans-serif; font-weight:500; }
+  table.tbl tr:nth-child(even) td{ background:var(--papel); }
+  table.tbl td:first-child{ color:var(--vinho); }
+
+  /* legenda de pílulas */
+  .pleg{ display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin-top:14px; }
+  .pleg .pill{ background:var(--branco); border:2px solid var(--linha); border-radius:12px; padding:9px 16px; text-align:center; min-width:90px; }
+  .pleg .pill b{ display:block; font-family:'Fredoka',sans-serif; font-size:1.4rem; color:var(--vermelho); line-height:1; }
+  .pleg .pill small{ color:var(--tinta-suave); font-weight:700; font-size:.7rem; text-transform:uppercase; letter-spacing:.05em; }
+
+  /* sliders */
+  .slider{ margin-top:16px; }
+  .slider label{ font-weight:800; display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; font-size:.95rem; gap:10px; }
+  .slider label b{ color:var(--vermelho); font-family:'Fredoka',sans-serif; font-weight:600; font-size:1.15rem; }
+  input[type=range]{ width:100%; accent-color:var(--vermelho); height:26px; cursor:pointer; }
+
+  /* calculadora */
+  .calc{ display:grid; gap:12px; }
+  .campo{ display:flex; flex-direction:column; gap:5px; }
+  .campo label{ font-weight:800; font-size:.9rem; }
+  .campo input[type=number]{
+    font-family:'Nunito',sans-serif; font-weight:800; font-size:1.05rem; color:var(--tinta);
+    border:2px solid var(--linha); border-radius:11px; padding:11px 13px; background:var(--papel); width:100%;
+  }
+  .campo input[type=number]:focus{ outline:3px solid var(--rosa-forte); border-color:var(--vermelho); }
+  .saida{ background:var(--vinho); color:#fff; border-radius:var(--r-medio); padding:16px 18px; margin-top:4px; }
+  .saida .big{ font-family:'Fredoka',sans-serif; font-size:1.7rem; line-height:1.1; }
+  .saida .steps{ font-weight:700; opacity:.92; margin-top:8px; font-size:.92rem; }
+  .saida .steps strong{ color:#ffd9d9; }
+  .duo{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .trio{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+  .badge{ display:inline-block; font-weight:800; font-size:.74rem; text-transform:uppercase; letter-spacing:.05em; padding:5px 12px; border-radius:999px; background:rgba(255,255,255,.18); color:#fff; margin-bottom:8px; }
+
+  /* casos do discriminante */
+  .cases{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:6px; }
+  .casebox{ border:2px solid var(--linha); border-radius:var(--r-medio); padding:14px; text-align:center; background:var(--papel); }
+  .casebox .d{ font-family:'Fredoka',sans-serif; font-size:1.25rem; color:var(--vermelho); }
+  .casebox p{ margin:6px 0 0; font-weight:700; font-size:.9rem; }
+
+  /* ---------- Triângulo retângulo ---------- */
+  .split{ display:grid; grid-template-columns:1fr .92fr; gap:24px; align-items:center; }
+  .geo-stage{
+    border:2px solid var(--linha); border-radius:var(--r-grande); padding:10px;
+    background-image:
+      linear-gradient(var(--grade) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grade) 1px, transparent 1px),
+      radial-gradient(120% 90% at 50% 8%, #fff, var(--papel) 72%);
+    background-size:22px 22px,22px 22px,100% 100%;
+  }
+  .geo-stage svg{ width:100%; height:auto; display:block; }
+  .tri-fill{ fill:rgba(209,31,39,.14); }
+  .tri-side{ stroke:var(--vinho); stroke-width:4; stroke-linecap:round; }
+  .tri-hyp{ stroke:var(--vermelho); stroke-width:5; stroke-linecap:round; }
+  .tri-square{ fill:none; stroke:var(--vinho); stroke-width:2.5; }
+  .tri-lab{ font-family:'Fredoka',sans-serif; font-weight:600; font-size:15px; fill:var(--vinho); }
+  .tri-lab.hyp{ fill:var(--vermelho); }
+  .tri-vertex{ fill:var(--vinho); }
+
+  /* ---------- Pitágoras: quadrados ---------- */
+  .sq-row{ display:flex; align-items:center; justify-content:center; gap:16px; flex-wrap:wrap; margin:8px 0 6px; }
+  .sq-item{ display:grid; justify-items:center; gap:9px; }
+  .sqg{ display:grid; gap:2px; background:var(--rosa-forte); padding:3px; border-radius:8px; box-shadow:var(--sombra-suave); }
+  .sqg span{ width:15px; height:15px; border-radius:2px; }
+  .sq-op{ font-family:'Fredoka',sans-serif; font-size:1.9rem; color:var(--vermelho); font-weight:600; }
+  .sq-cap{ text-align:center; }
+  .sq-cap b{ display:block; font-family:'Fredoka',sans-serif; color:var(--vinho); font-size:1.1rem; }
+  .sq-cap small{ color:var(--tinta-suave); font-weight:700; font-size:.7rem; text-transform:uppercase; letter-spacing:.05em; }
+
+  /* ---------------- Rodapé ---------------- */
+  footer.rodape{
+    background:var(--vinho); color:#fff; margin-top:30px;
+    border-top:6px solid var(--vermelho-vivo);
+  }
+  .rodape-in{ padding:38px 0; text-align:center; }
+  .rodape .logo{ margin:0 auto 14px; }
+  .rodape h3{ font-size:1.5rem; }
+  .rodape p{ opacity:.85; font-weight:600; max-width:48ch; margin:8px auto 0; }
+  .rodape .assina{ margin-top:18px; font-family:'Fredoka',sans-serif; font-size:1.2rem; }
+  .rodape .assina span{ display:block; font-family:'Nunito',sans-serif; font-weight:700; font-size:.78rem; opacity:.7; letter-spacing:.08em; text-transform:uppercase; }
+
+  /* ---------------- Animação de entrada ---------------- */
+  .reveal{ opacity:0; transform:translateY(22px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.show{ opacity:1; transform:none; }
+
+  /* ---------------- Responsivo ---------------- */
+  @media (max-width: 860px){
+    .hero-grid{ grid-template-columns:1fr; }
+    .hero-art{ order:-1; }
+    .grid2, .grid3, .split, .duo, .cases{ grid-template-columns:1fr; }
+    nav.menu{ display:none; }
+    .cab .num{ font-size:2rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    .reveal{ opacity:1; transform:none; transition:none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= CABEÇALHO ================= -->
+<header class="topo">
+  <div class="wrap topo-in">
+    <div class="marca">
+      <div class="logo">9º</div>
+      <div>
+        <b>Matemática</b>
+        <span>Caderno de revisão</span>
+      </div>
+    </div>
+    <nav class="menu" aria-label="Seções da revisão">
+      <a href="#incompletas">Incompletas</a>
+      <a href="#bhaskara">Bhaskara</a>
+      <a href="#triangulos">Triângulos</a>
+      <a href="#pitagoras">Pitágoras</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">9º ano · Ensino Fundamental</span>
+      <h1>Revisão de <em>Matemática</em></h1>
+      <p class="sub">Reta final de revisão: equações do 2º grau (incompletas e completas pela fórmula de Bhaskara), triângulos retângulos e o Teorema de Pitágoras — com resolvedores e modelos interativos para você testar.</p>
+
+      <div class="prof">
+        <span class="av">JL</span>
+        <div>
+          <small>Professor</small>
+          Jardel A. Leite
+        </div>
+      </div>
+
+      <div class="chips">
+        <div class="chip"><i>x²</i> Equações 2º grau</div>
+        <div class="chip"><i>√</i> Bhaskara</div>
+        <div class="chip"><i>◣</i> Triângulos</div>
+        <div class="chip"><i>a²</i> Pitágoras</div>
+      </div>
+    </div>
+
+    <div class="hero-art">
+      <div class="artframe">
+        <svg viewBox="0 0 300 200" role="img" aria-label="Parábola de uma equação do segundo grau cortando o eixo x em duas raízes">
+          <!-- eixos -->
+          <line x1="28" y1="140" x2="278" y2="140" stroke="var(--tinta-suave)" stroke-width="2"/>
+          <line x1="150" y1="22" x2="150" y2="180" stroke="var(--tinta-suave)" stroke-width="2"/>
+          <text x="270" y="156" font-family="Nunito, sans-serif" font-weight="800" font-size="13" fill="var(--tinta-suave)">x</text>
+          <text x="156" y="32" font-family="Nunito, sans-serif" font-weight="800" font-size="13" fill="var(--tinta-suave)">y</text>
+          <!-- parábola -->
+          <path d="M 60 40 L 75 76.8 L 90 106.7 L 105 130 L 120 146.7 L 135 156.7 L 150 160 L 165 156.7 L 180 146.7 L 195 130 L 210 106.7 L 225 76.8 L 240 40"
+                fill="none" stroke="var(--vermelho)" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+          <!-- raízes -->
+          <circle cx="113" cy="140" r="6" fill="var(--vinho)"/>
+          <circle cx="187" cy="140" r="6" fill="var(--vinho)"/>
+          <circle cx="150" cy="160" r="5" fill="var(--vermelho-vivo)"/>
+          <text x="104" y="162" font-family="Fredoka, sans-serif" font-weight="600" font-size="16" fill="var(--vinho)">x₁</text>
+          <text x="190" y="162" font-family="Fredoka, sans-serif" font-weight="600" font-size="16" fill="var(--vinho)">x₂</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 1. EQUAÇÕES DO 2º GRAU — INCOMPLETAS ================= -->
+<section class="bloco" id="incompletas">
+  <div class="wrap">
+    <div class="cab reveal">
+      <div class="num">01</div>
+      <div class="ttl">
+        <h2>Equações do 2º grau — incompletas</h2>
+        <p>Quando falta o b ou o c</p>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <p class="lead">Toda equação do 2º grau tem a forma <strong>ax² + bx + c = 0</strong>, com <strong>a ≠ 0</strong>. Ela é <strong>incompleta</strong> quando o coeficiente <strong>b</strong> ou o <strong>c</strong> (ou os dois) é igual a zero. Nesses casos, dá para resolver de um jeito mais rápido, sem precisar de Bhaskara.</p>
+      <table class="tbl">
+        <tr><th>Tipo</th><th>Forma</th><th>Como resolver</th></tr>
+        <tr><td>c = 0</td><td>ax² + bx = 0</td><td>fator comum: x · (ax + b) = 0</td></tr>
+        <tr><td>b = 0</td><td>ax² + c = 0</td><td>isolar o x²: x² = −c/a</td></tr>
+        <tr><td>b = 0 e c = 0</td><td>ax² = 0</td><td>x = 0 (raiz dupla)</td></tr>
+      </table>
+    </div>
+
+    <div class="grid2" style="margin-top:22px;">
+      <div class="card reveal">
+        <h3 class="mini">Tipo 1 · falta o c (ax² + bx = 0)</h3>
+        <p>Coloque o <strong>x em evidência</strong> (fator comum). Um produto é zero quando um dos fatores é zero — então uma das raízes é sempre <strong>x = 0</strong>.</p>
+        <div class="ex">
+          <div class="tt">Exemplo</div>
+          <div class="passo">2x² − 8x = 0</div>
+          <div class="passo">x · (2x − 8) = 0</div>
+          <div class="passo">x = 0 &nbsp;&nbsp;ou&nbsp;&nbsp; 2x − 8 = 0 → x = 4</div>
+          <span class="res">Raízes: x = 0 e x = 4</span>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <h3 class="mini">Tipo 2 · falta o b (ax² + c = 0)</h3>
+        <p>Deixe o <strong>x² sozinho</strong> de um lado e tire a <strong>raiz quadrada</strong> (lembrando do <strong>±</strong>). Só existe raiz real se o número for positivo.</p>
+        <div class="ex">
+          <div class="tt">Tem solução</div>
+          <div class="passo">x² − 9 = 0 → x² = 9</div>
+          <div class="passo">x = ±√9</div>
+          <span class="res">Raízes: x = −3 e x = 3</span>
+        </div>
+        <div class="ex">
+          <div class="tt">Sem solução real</div>
+          <div class="passo">x² + 4 = 0 → x² = −4</div>
+          <div class="passo">não existe √ de número negativo</div>
+          <span class="res">Sem raízes reais</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="nota reveal" style="margin-top:22px;"><b>Resumo:</b> na incompleta com c = 0, sempre aparece o x = 0. Na incompleta com b = 0, as raízes são <strong>simétricas</strong> (uma positiva e uma negativa, como −3 e 3) — ou não existem, se o x² ficar igual a um número negativo.</div>
+  </div>
+</section>
+
+<!-- ================= 2. EQUAÇÕES DO 2º GRAU — BHASKARA ================= -->
+<section class="bloco" id="bhaskara">
+  <div class="wrap">
+    <div class="cab reveal">
+      <div class="num">02</div>
+      <div class="ttl">
+        <h2>Equações completas — fórmula de Bhaskara</h2>
+        <p>O método algébrico para ax² + bx + c = 0</p>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <p class="lead">Quando a equação é <strong>completa</strong> (tem a, b e c diferentes de zero), usamos a <strong>fórmula de Bhaskara</strong>. Primeiro calculamos o <strong>discriminante Δ</strong> (lê-se "delta") e depois aplicamos a fórmula:</p>
+      <div class="formula">Δ = b² − 4ac</div>
+      <div class="formula">x = <span class="frac"><span class="top">−b ± √Δ</span><span class="bot">2a</span></span></div>
+      <p style="margin-top:4px;">O sinal <strong>±</strong> quer dizer que fazemos a conta <strong>duas vezes</strong>: uma somando √Δ e outra subtraindo. O valor de Δ já avisa quantas raízes a equação tem:</p>
+      <div class="cases">
+        <div class="casebox"><div class="d">Δ &gt; 0</div><p>duas raízes reais diferentes</p></div>
+        <div class="casebox"><div class="d">Δ = 0</div><p>uma raiz real (dupla)</p></div>
+        <div class="casebox"><div class="d">Δ &lt; 0</div><p>nenhuma raiz real</p></div>
+      </div>
+    </div>
+
+    <div class="grid2" style="margin-top:22px;">
+      <div class="card reveal">
+        <h3 class="mini">Resolva por Bhaskara <span class="tag">teste</span></h3>
+        <p>Escolha os coeficientes de <strong>ax² + bx + c = 0</strong> e acompanhe a conta:</p>
+        <div class="calc">
+          <div class="trio">
+            <div class="campo"><label for="bk-a">a</label><input type="number" id="bk-a" value="1" step="1" inputmode="numeric"></div>
+            <div class="campo"><label for="bk-b">b</label><input type="number" id="bk-b" value="-5" step="1" inputmode="numeric"></div>
+            <div class="campo"><label for="bk-c">c</label><input type="number" id="bk-c" value="6" step="1" inputmode="numeric"></div>
+          </div>
+          <div class="saida">
+            <span class="badge" id="bk-case">Δ &gt; 0 · duas raízes</span>
+            <div class="big" id="bk-roots">x₁ = 3 &nbsp;&nbsp; x₂ = 2</div>
+          </div>
+          <div class="steps" id="bk-steps" style="color:var(--tinta); font-weight:700; font-size:.92rem;"></div>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <h3 class="mini">Exemplos resolvidos</h3>
+        <div class="ex" style="margin-top:0;">
+          <div class="tt">Duas raízes (Δ &gt; 0)</div>
+          <div class="passo">2x² + 5x − 3 = 0 &nbsp;(a=2, b=5, c=−3)</div>
+          <div class="passo">Δ = 5² − 4·2·(−3) = 25 + 24 = 49</div>
+          <div class="passo">x = (−5 ± √49) / 4 = (−5 ± 7) / 4</div>
+          <span class="res">x₁ = 1/2 &nbsp; e &nbsp; x₂ = −3</span>
+        </div>
+        <div class="ex">
+          <div class="tt">Uma raiz dupla (Δ = 0)</div>
+          <div class="passo">x² − 6x + 9 = 0 &nbsp;(a=1, b=−6, c=9)</div>
+          <div class="passo">Δ = (−6)² − 4·1·9 = 36 − 36 = 0</div>
+          <div class="passo">x = (6 ± 0) / 2</div>
+          <span class="res">x = 3 (raiz dupla)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 3. TRIÂNGULOS RETÂNGULOS ================= -->
+<section class="bloco" id="triangulos">
+  <div class="wrap">
+    <div class="cab reveal">
+      <div class="num">03</div>
+      <div class="ttl">
+        <h2>Triângulos retângulos</h2>
+        <p>O triângulo com um ângulo de 90°</p>
+      </div>
+    </div>
+
+    <div class="card reveal" style="margin-bottom:22px;">
+      <p class="lead" style="margin:0 0 .6em;">Um <strong>triângulo retângulo</strong> é aquele que tem um <strong>ângulo reto</strong> (90°). Os lados têm nomes especiais:</p>
+      <p style="margin:0 0 .4em;">• A <strong>hipotenusa</strong> é o lado <strong>oposto ao ângulo reto</strong> — e é sempre o <strong>lado maior</strong>.</p>
+      <p style="margin:0 0 .4em;">• Os <strong>catetos</strong> são os dois lados que <strong>formam o ângulo reto</strong>.</p>
+      <p style="margin:0;">Como a soma dos ângulos de qualquer triângulo é 180°, os dois ângulos que não são retos são <strong>agudos</strong> e, juntos, somam 90°. Mexa nos catetos abaixo e veja tudo mudar:</p>
+    </div>
+
+    <div class="split">
+      <div class="geo-stage reveal" id="tri-stage">
+        <svg viewBox="0 0 300 240" id="tri-svg" role="img" aria-label="Triângulo retângulo ajustável com catetos e hipotenusa">
+          <polygon class="tri-fill" id="tri-poly" points=""></polygon>
+          <line class="tri-side" id="tri-legb" x1="58" y1="196" x2="196" y2="196"></line>
+          <line class="tri-side" id="tri-legc" x1="58" y1="196" x2="58" y2="104"></line>
+          <line class="tri-hyp" id="tri-hyp" x1="196" y1="196" x2="58" y2="104"></line>
+          <path class="tri-square" id="tri-sq" d="M 71 196 L 71 183 L 58 183"></path>
+          <circle class="tri-vertex" cx="58" cy="196" r="4"></circle>
+          <text class="tri-lab" id="tri-lblb" x="127" y="216" text-anchor="middle">b</text>
+          <text class="tri-lab" id="tri-lblc" x="44" y="150" text-anchor="end">c</text>
+          <text class="tri-lab hyp" id="tri-lbla" x="140" y="142">a</text>
+        </svg>
+      </div>
+      <div class="tri-ctrl reveal">
+        <h3 class="mini">Experimente <span class="tag">mexa</span></h3>
+        <div class="pleg" style="margin-top:0;">
+          <div class="pill"><b id="tri-pb">6</b><small>cateto b</small></div>
+          <div class="pill"><b id="tri-pc">8</b><small>cateto c</small></div>
+          <div class="pill"><b id="tri-pa">10</b><small>hipotenusa a</small></div>
+        </div>
+        <div class="slider"><label for="tri-b"><span>Cateto b</span><b id="tri-bv">6</b></label><input type="range" id="tri-b" min="2" max="12" value="6"></div>
+        <div class="slider"><label for="tri-c"><span>Cateto c</span><b id="tri-cv">8</b></label><input type="range" id="tri-c" min="2" max="12" value="8"></div>
+        <div class="nota" id="tri-ang"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 4. TEOREMA DE PITÁGORAS ================= -->
+<section class="bloco" id="pitagoras">
+  <div class="wrap">
+    <div class="cab reveal">
+      <div class="num">04</div>
+      <div class="ttl">
+        <h2>Teorema de Pitágoras</h2>
+        <p>A relação entre os lados do triângulo retângulo</p>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <p class="lead">Em <strong>todo triângulo retângulo</strong>, o quadrado da hipotenusa é igual à <strong>soma dos quadrados dos catetos</strong>:</p>
+      <div class="formula">a² = b² + c² <small>a = hipotenusa &nbsp;·&nbsp; b e c = catetos</small></div>
+      <p style="margin-top:4px;">Veja com o famoso triângulo <strong>3, 4, 5</strong>: o quadrado de cada cateto, somado, dá exatamente o quadrado da hipotenusa. Conte os quadradinhos!</p>
+      <div class="sq-row">
+        <div class="sq-item"><div class="sqg" id="sq3"></div><div class="sq-cap"><b>3² = 9</b><small>cateto</small></div></div>
+        <div class="sq-op">+</div>
+        <div class="sq-item"><div class="sqg" id="sq4"></div><div class="sq-cap"><b>4² = 16</b><small>cateto</small></div></div>
+        <div class="sq-op">=</div>
+        <div class="sq-item"><div class="sqg" id="sq5"></div><div class="sq-cap"><b>5² = 25</b><small>hipotenusa</small></div></div>
+      </div>
+      <div class="nota"><b>9 + 16 = 25</b> ✔ Confere! Trios de números inteiros que fecham certinho assim são chamados de <strong>ternos pitagóricos</strong>: (3, 4, 5), (5, 12, 13), (8, 15, 17) — e seus múltiplos, como (6, 8, 10).</div>
+    </div>
+
+    <div class="grid2" style="margin-top:22px;">
+      <div class="card reveal">
+        <h3 class="mini">Achar a hipotenusa <span class="tag">teste</span></h3>
+        <p>Você tem os dois catetos e quer o lado maior: <strong>a = √(b² + c²)</strong>.</p>
+        <div class="calc">
+          <div class="duo">
+            <div class="campo"><label for="hp-b">Cateto b</label><input type="number" id="hp-b" value="3" min="0" step="any" inputmode="decimal"></div>
+            <div class="campo"><label for="hp-c">Cateto c</label><input type="number" id="hp-c" value="4" min="0" step="any" inputmode="decimal"></div>
+          </div>
+          <div class="saida">
+            <div class="big" id="hp-out">a = 5</div>
+            <div class="steps" id="hp-steps"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <h3 class="mini">Achar um cateto <span class="tag">teste</span></h3>
+        <p>Você tem a hipotenusa e um cateto e quer o outro: <strong>c = √(a² − b²)</strong>.</p>
+        <div class="calc">
+          <div class="duo">
+            <div class="campo"><label for="ct-a">Hipotenusa a</label><input type="number" id="ct-a" value="13" min="0" step="any" inputmode="decimal"></div>
+            <div class="campo"><label for="ct-b">Cateto b</label><input type="number" id="ct-b" value="5" min="0" step="any" inputmode="decimal"></div>
+          </div>
+          <div class="saida">
+            <div class="big" id="ct-out">c = 12</div>
+            <div class="steps" id="ct-steps"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card reveal" style="margin-top:22px;">
+      <h3 class="mini">Exemplos do dia a dia</h3>
+      <div class="grid3">
+        <div class="ex" style="margin-top:0;">
+          <div class="tt">A escada na parede</div>
+          <div class="passo">Escada de <strong>5 m</strong>, com a base a <strong>3 m</strong> da parede. Que altura ela alcança?</div>
+          <div class="passo">altura = √(5² − 3²) = √(25 − 9) = √16</div>
+          <span class="res">Altura = 4 m</span>
+        </div>
+        <div class="ex" style="margin-top:0;">
+          <div class="tt">O portão</div>
+          <div class="passo">Um portão de <strong>2 m</strong> por <strong>1,5 m</strong>. Qual o tamanho da travessa na diagonal?</div>
+          <div class="passo">d = √(2² + 1,5²) = √(4 + 2,25) = √6,25</div>
+          <span class="res">Diagonal = 2,5 m</span>
+        </div>
+        <div class="ex" style="margin-top:0;">
+          <div class="tt">A distância reta</div>
+          <div class="passo">Ando <strong>8 km</strong> para o leste e <strong>6 km</strong> para o norte. Quão longe estou do início?</div>
+          <div class="passo">d = √(8² + 6²) = √(64 + 36) = √100</div>
+          <span class="res">Distância = 10 km</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RODAPÉ ================= -->
+<footer class="rodape">
+  <div class="wrap rodape-in">
+    <div class="logo">9º</div>
+    <h3>Bons estudos!</h3>
+    <p>Refaça os exemplos, teste o resolvedor de Bhaskara com vários números e mexa no triângulo até a relação a² = b² + c² ficar natural. Errar faz parte de aprender!</p>
+    <div class="assina">
+      <span>Material elaborado pelo professor</span>
+      Jardel A. Leite
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- Util ---------- */
+  function numfmt(n){
+    if(!isFinite(n)) return '\u2014';
+    var r = Math.round(n * 100) / 100;
+    if(Math.abs(r - Math.round(r)) < 1e-9) return String(Math.round(r));
+    return r.toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 2 });
+  }
+  function par(n){ return (n < 0) ? '(' + numfmt(n) + ')' : numfmt(n); }
+  function isPerfectSq(d){ if(d < 0) return false; var r = Math.sqrt(d); return Math.abs(r - Math.round(r)) < 1e-9; }
+
+  /* ---------- Bhaskara ---------- */
+  var bkA = document.getElementById('bk-a');
+  var bkB = document.getElementById('bk-b');
+  var bkC = document.getElementById('bk-c');
+  if(bkA && bkB && bkC){
+    var bkCase = document.getElementById('bk-case');
+    var bkRoots = document.getElementById('bk-roots');
+    var bkSteps = document.getElementById('bk-steps');
+    function bhaskara(){
+      var a = parseFloat(bkA.value);
+      var b = parseFloat(bkB.value);
+      var c = parseFloat(bkC.value);
+      if(isNaN(a) || isNaN(b) || isNaN(c)){
+        bkRoots.textContent = '\u2014'; bkCase.textContent = 'preencha a, b e c'; bkSteps.textContent = '';
+        return;
+      }
+      if(Math.abs(a) < 1e-9){
+        bkRoots.textContent = '\u2014';
+        bkCase.textContent = 'n\u00e3o \u00e9 do 2\u00ba grau';
+        bkSteps.innerHTML = 'Se <strong>a = 0</strong>, n\u00e3o existe o termo x\u00b2 \u2014 ent\u00e3o n\u00e3o \u00e9 uma equa\u00e7\u00e3o do 2\u00ba grau.';
+        return;
+      }
+      var D = b * b - 4 * a * c;
+      var s = 'a = ' + numfmt(a) + ',\u00a0 b = ' + numfmt(b) + ',\u00a0 c = ' + numfmt(c) + '<br>';
+      s += '\u0394 = b\u00b2 \u2212 4ac = ' + par(b) + '\u00b2 \u2212 4\u00b7' + par(a) + '\u00b7' + par(c) + ' = ' + numfmt(b * b) + ' \u2212 ' + numfmt(4 * a * c) + ' = <strong>' + numfmt(D) + '</strong>';
+      if(D < -1e-9){
+        bkCase.textContent = '\u0394 < 0 \u00b7 sem ra\u00edzes reais';
+        bkRoots.textContent = 'Sem ra\u00edzes reais';
+        s += '<br>\u0394 \u00e9 negativo \u2192 n\u00e3o existe \u221a de n\u00famero negativo nos reais.';
+        bkSteps.innerHTML = s;
+        return;
+      }
+      var rt = Math.sqrt(Math.max(D, 0));
+      var perfect = isPerfectSq(D);
+      var rtv = perfect ? String(Math.round(rt)) : numfmt(rt);
+      s += '<br>\u221a\u0394 = \u221a' + numfmt(D) + ' = ' + (perfect ? rtv : ('\u2248 ' + rtv));
+      s += '<br>x = (\u2212b \u00b1 \u221a\u0394) \u00f7 2a = (' + numfmt(-b) + ' \u00b1 ' + rtv + ') \u00f7 ' + numfmt(2 * a);
+      var x1 = (-b + rt) / (2 * a);
+      var x2 = (-b - rt) / (2 * a);
+      if(Math.abs(D) < 1e-9){
+        bkCase.textContent = '\u0394 = 0 \u00b7 uma raiz (dupla)';
+        bkRoots.textContent = 'x = ' + numfmt(x1) + '   (raiz dupla)';
+      } else {
+        bkCase.textContent = '\u0394 > 0 \u00b7 duas ra\u00edzes';
+        bkRoots.innerHTML = 'x\u2081 = ' + numfmt(x1) + ' &nbsp;&nbsp; x\u2082 = ' + numfmt(x2);
+      }
+      bkSteps.innerHTML = s;
+    }
+    bkA.addEventListener('input', bhaskara);
+    bkB.addEventListener('input', bhaskara);
+    bkC.addEventListener('input', bhaskara);
+    bhaskara();
+  }
+
+  /* ---------- Triângulo retângulo ---------- */
+  var trB = document.getElementById('tri-b');
+  var trC = document.getElementById('tri-c');
+  if(trB && trC){
+    var Ax = 58, Ay = 196, upx = 11.5;
+    var poly = document.getElementById('tri-poly');
+    var legB = document.getElementById('tri-legb');
+    var legC = document.getElementById('tri-legc');
+    var hyp = document.getElementById('tri-hyp');
+    var lblB = document.getElementById('tri-lblb');
+    var lblC = document.getElementById('tri-lblc');
+    var lblA = document.getElementById('tri-lbla');
+    var pB = document.getElementById('tri-pb');
+    var pC = document.getElementById('tri-pc');
+    var pA = document.getElementById('tri-pa');
+    var bv = document.getElementById('tri-bv');
+    var cv = document.getElementById('tri-cv');
+    var angBox = document.getElementById('tri-ang');
+    function drawTri(){
+      var b = parseInt(trB.value, 10);
+      var c = parseInt(trC.value, 10);
+      var Bx = Ax + b * upx, By = Ay;
+      var Cx = Ax, Cy = Ay - c * upx;
+      poly.setAttribute('points', Ax + ',' + Ay + ' ' + Bx + ',' + By + ' ' + Cx + ',' + Cy);
+      legB.setAttribute('x2', Bx); legB.setAttribute('y2', By);
+      legC.setAttribute('x2', Cx); legC.setAttribute('y2', Cy);
+      hyp.setAttribute('x1', Bx); hyp.setAttribute('y1', By);
+      hyp.setAttribute('x2', Cx); hyp.setAttribute('y2', Cy);
+      lblB.setAttribute('x', (Ax + Bx) / 2); lblB.textContent = 'b = ' + b;
+      lblC.setAttribute('y', (Ay + Cy) / 2 + 5); lblC.textContent = 'c = ' + c;
+      var mx = (Bx + Cx) / 2, my = (By + Cy) / 2;
+      lblA.setAttribute('x', mx + 8); lblA.setAttribute('y', my - 6);
+      var a = Math.sqrt(b * b + c * c);
+      lblA.textContent = (Math.abs(a - Math.round(a)) < 1e-9 ? 'a = ' : 'a \u2248 ') + numfmt(a);
+      pB.textContent = b; pC.textContent = c; pA.textContent = numfmt(a);
+      bv.textContent = b; cv.textContent = c;
+      var angB = Math.round(Math.atan2(c, b) * 180 / Math.PI);
+      var angC = 90 - angB;
+      angBox.innerHTML = '<b>\u00c2ngulos:</b> o reto de 90\u00b0 mais os dois agudos de \u2248 ' + angB + '\u00b0 e \u2248 ' + angC + '\u00b0 (90\u00b0 + ' + angB + '\u00b0 + ' + angC + '\u00b0 = 180\u00b0).';
+    }
+    trB.addEventListener('input', drawTri);
+    trC.addEventListener('input', drawTri);
+    drawTri();
+  }
+
+  /* ---------- Pitágoras: quadrados 3-4-5 ---------- */
+  var squares = [
+    { id: 'sq3', n: 3, col: 'var(--vermelho)' },
+    { id: 'sq4', n: 4, col: 'var(--vermelho-vivo)' },
+    { id: 'sq5', n: 5, col: 'var(--vinho)' }
+  ];
+  for(var q = 0; q < squares.length; q++){
+    var o = squares[q];
+    var g = document.getElementById(o.id);
+    if(g){
+      g.style.gridTemplateColumns = 'repeat(' + o.n + ', 15px)';
+      for(var k = 0; k < o.n * o.n; k++){
+        var sp = document.createElement('span');
+        sp.style.background = o.col;
+        g.appendChild(sp);
+      }
+    }
+  }
+
+  /* ---------- Pitágoras: achar a hipotenusa ---------- */
+  var hpB = document.getElementById('hp-b');
+  var hpC = document.getElementById('hp-c');
+  if(hpB && hpC){
+    var hpOut = document.getElementById('hp-out');
+    var hpSteps = document.getElementById('hp-steps');
+    function calcHip(){
+      var b = parseFloat(hpB.value);
+      var c = parseFloat(hpC.value);
+      if(isNaN(b) || isNaN(c) || b < 0 || c < 0){
+        hpOut.textContent = '\u2014'; hpSteps.textContent = 'Preencha os dois catetos.';
+        return;
+      }
+      var a = Math.sqrt(b * b + c * c);
+      hpOut.textContent = (Math.abs(a - Math.round(a)) < 1e-9 ? 'a = ' : 'a \u2248 ') + numfmt(a);
+      hpSteps.innerHTML = 'a\u00b2 = b\u00b2 + c\u00b2 = ' + numfmt(b * b) + ' + ' + numfmt(c * c) + ' = ' + numfmt(b * b + c * c) + '<br>a = \u221a' + numfmt(b * b + c * c) + ' = <strong>' + numfmt(a) + '</strong>';
+    }
+    hpB.addEventListener('input', calcHip);
+    hpC.addEventListener('input', calcHip);
+    calcHip();
+  }
+
+  /* ---------- Pitágoras: achar um cateto ---------- */
+  var ctA = document.getElementById('ct-a');
+  var ctB = document.getElementById('ct-b');
+  if(ctA && ctB){
+    var ctOut = document.getElementById('ct-out');
+    var ctSteps = document.getElementById('ct-steps');
+    function calcCat(){
+      var a = parseFloat(ctA.value);
+      var b = parseFloat(ctB.value);
+      if(isNaN(a) || isNaN(b) || a < 0 || b < 0){
+        ctOut.textContent = '\u2014'; ctSteps.textContent = 'Preencha a hipotenusa e o cateto.';
+        return;
+      }
+      if(a <= b){
+        ctOut.textContent = '\u2014';
+        ctSteps.innerHTML = 'A <strong>hipotenusa</strong> precisa ser <strong>maior</strong> que o cateto (ela \u00e9 o lado maior).';
+        return;
+      }
+      var c = Math.sqrt(a * a - b * b);
+      ctOut.textContent = (Math.abs(c - Math.round(c)) < 1e-9 ? 'c = ' : 'c \u2248 ') + numfmt(c);
+      ctSteps.innerHTML = 'c\u00b2 = a\u00b2 \u2212 b\u00b2 = ' + numfmt(a * a) + ' \u2212 ' + numfmt(b * b) + ' = ' + numfmt(a * a - b * b) + '<br>c = \u221a' + numfmt(a * a - b * b) + ' = <strong>' + numfmt(c) + '</strong>';
+    }
+    ctA.addEventListener('input', calcCat);
+    ctB.addEventListener('input', calcCat);
+    calcCat();
+  }
+
+  /* ---------- Revelar ao rolar + menu ativo ---------- */
+  var revs = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window && !reduce){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    for(var ri = 0; ri < revs.length; ri++){ io.observe(revs[ri]); }
+  } else {
+    for(var rj = 0; rj < revs.length; rj++){ revs[rj].classList.add('show'); }
+  }
+
+  var secs = document.querySelectorAll('section.bloco');
+  var links = document.querySelectorAll('nav.menu a');
+  if('IntersectionObserver' in window && links.length){
+    var navIo = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          var id = e.target.getAttribute('id');
+          for(var li = 0; li < links.length; li++){
+            var match = links[li].getAttribute('href') === '#' + id;
+            if(match) links[li].classList.add('ativo'); else links[li].classList.remove('ativo');
+          }
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    for(var si = 0; si < secs.length; si++){ navIo.observe(secs[si]); }
+  }
+})();
+</script>
+</body>
+</html>
