@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel do 7º Ano - Matemática Tirando de Letra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+<style>
+  :root{ --vinho:#7d0d12; --vermelho:#d11f27; --vermelho-vivo:#ef3b3b; --rosa:#ffe6e6; --rosa-forte:#ffd0d0; --papel:#fff7f6; --branco:#ffffff; --tinta:#2c2120; --tinta-suave:#8a6f6d; --linha:#f0d3d3; --grade: rgba(209,31,39,.06); --sombra: 0 14px 34px -18px rgba(125,13,18,.45); --sombra-suave: 0 6px 16px -10px rgba(125,13,18,.4); --r-grande: 22px; }
+  *{ box-sizing:border-box; }
+  body{ margin:0; font-family:'Nunito', system-ui, sans-serif; color:var(--tinta); background-color:var(--papel); background-image: linear-gradient(var(--grade) 1px, transparent 1px), linear-gradient(90deg, var(--grade) 1px, transparent 1px); background-size: 26px 26px; line-height:1.6; }
+  h1,h2,h3{ font-family:'Fredoka', sans-serif; font-weight:600; line-height:1.12; margin:0; }
+  a{ color:inherit; text-decoration: none; }
+  .wrap{ width:min(1080px, 92vw); margin:0 auto; }
+  header.topo{ position:sticky; top:0; z-index:50; background:rgba(255,247,246,.86); backdrop-filter:blur(10px); border-bottom:2px solid var(--linha); }
+  .topo-in{ display:flex; align-items:center; gap:14px; padding:12px 0; }
+  .marca{ display:flex; align-items:center; gap:11px; font-family:'Fredoka',sans-serif; font-weight:600; }
+  .logo{ width:42px; height:42px; border-radius:12px; flex:none; background:linear-gradient(150deg, var(--vermelho-vivo), var(--vinho)); color:#fff; display:grid; place-items:center; font-size:1.4rem; box-shadow: var(--sombra-suave); }
+  .marca b{ font-weight:600; font-size:1.1rem; line-height:1; }
+  .marca span{ display:block; font-family:'Nunito',sans-serif; font-weight:700; font-size:.72rem; color:var(--tinta-suave); text-transform:uppercase; }
+  nav.menu{ margin-left:auto; display:flex; gap:10px; align-items: center; }
+  nav.menu a.nav-link{ font-weight:700; font-size:.95rem; color:var(--tinta); padding:7px 16px; border-radius:999px; transition:background .18s, color .18s; border: 2px solid var(--linha); background: var(--branco); }
+  nav.menu a.nav-link:hover{ background:var(--rosa); color:var(--vinho); border-color: var(--rosa-forte); }
+  
+  .hero{ padding:60px 0 40px; text-align: center; }
+  .hero h1{ font-size:clamp(2.5rem, 6vw, 3.5rem); color: var(--vinho); }
+  .hero h1 em{ font-style:normal; color:var(--vermelho); }
+  .hero p.sub{ font-size:1.2rem; color:var(--tinta-suave); max-width:50ch; margin:16px auto 0; font-weight: 600; }
+
+  .painel-conteudo { padding: 0 0 80px; }
+  .acordeao { background: var(--branco); border: 2px solid var(--linha); border-radius: var(--r-grande); margin-bottom: 24px; box-shadow: var(--sombra-suave); overflow: hidden; transition: border-color 0.3s; max-width: 800px; margin-left: auto; margin-right: auto; }
+  .acordeao:hover { border-color: var(--rosa-forte); }
+  details[open].acordeao { border-color: var(--vermelho); box-shadow: var(--sombra); }
+  details[open].acordeao .seta { transform: rotate(180deg); color: var(--vermelho); }
+  .acordeao summary { padding: 24px 30px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; list-style: none; user-select: none; }
+  .acordeao summary::-webkit-details-marker { display: none; }
+  .sum-titulo { display: flex; align-items: center; gap: 16px; }
+  .sum-titulo h2 { color: var(--vinho); font-size: 1.8rem; margin: 0; }
+  .sum-titulo .icone { width: 54px; height: 54px; background: var(--rosa); color: var(--vinho); border-radius: 14px; display: grid; place-items: center; font-size: 1.6rem; }
+  .seta { font-size: 1.2rem; color: var(--tinta-suave); transition: transform 0.3s ease; font-weight: 800; }
+  .acordeao-conteudo { padding: 0 30px 30px 30px; display: flex; flex-direction: column; gap: 12px; }
+  .item-link { display: flex; align-items: center; gap: 12px; background: var(--papel); border: 2px solid var(--linha); padding: 18px 24px; border-radius: 14px; font-size: 1.2rem; font-weight: 700; color: var(--vinho); transition: all 0.2s; text-decoration: none; }
+  .item-link::before { content: "📄"; font-size: 1.2rem; }
+  .item-link:hover { background: var(--vermelho); color: #fff; border-color: var(--vermelho); transform: translateX(6px); }
+</style>
+</head>
+<body>
+
+<header class="topo">
+  <div class="wrap topo-in">
+    <div class="marca">
+      <div class="logo">7º</div>
+      <div>
+        <b>Turma 7º Ano</b>
+        <span>Prof. Jardel A. Leite</span>
+      </div>
+    </div>
+    <nav class="menu">
+      <a href="index.html" class="nav-link">⬅ Voltar ao Início</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <h1>Painel do <em>7º Ano</em></h1>
+    <p class="sub">Bem-vindo(a)! Clique nas caixas abaixo para expandir e acessar os materiais da sua turma.</p>
+  </div>
+</section>
+
+<section class="painel-conteudo">
+  <div class="wrap">
+    
+    <details class="acordeao">
+      <summary>
+        <div class="sum-titulo">
+          <div class="icone">📚</div>
+          <h2>Conteúdos</h2>
+        </div>
+        <span class="seta">▼</span>
+      </summary>
+      <div class="acordeao-conteudo">
+        <a href="revisao-7.html" class="item-link">Resumo e Revisão do 7º Ano</a>
+      </div>
+    </details>
+
+    <details class="acordeao">
+      <summary>
+        <div class="sum-titulo">
+          <div class="icone">✎</div>
+          <h2>Atividades</h2>
+        </div>
+        <span class="seta">▼</span>
+      </summary>
+      <div class="acordeao-conteudo">
+        <a href="atividade-revisao-7ano.html" class="item-link">Atividades de Revisão</a>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+</body>
+</html>
