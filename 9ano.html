@@ -66,9 +66,29 @@
 <section class="hero">
   <div class="wrap">
     <h1>Painel do <em>9º Ano</em></h1>
-    <p class="sub">Bem-vindo(a)! Clique nas caixas abaixo para expandir e acessar os materiais da sua turma.</p>
+    <p class="sub" id="mensagemBoasVindas" style="font-weight: 800; color: var(--vermelho);">
+      </p>
+    <p class="sub" style="margin-top: 5px;">
+      Clique nas caixas abaixo para expandir e acessar os materiais da sua turma.
+    </p>
   </div>
 </section>
+
+<script>
+  // Script de Proteção e Boas-Vindas
+  
+  // 1. Verifica se existe autorização salva no navegador para o 9º Ano
+  const nomeAlunoLogado = localStorage.getItem('acesso_turma_9');
+
+  if (!nomeAlunoLogado) {
+    // Se NÃO tiver o nome, ele tenta dar um "espertinho", voltamos ele para o início:
+    alert("Acesso Negado! Identifique-se na página inicial primeiro.");
+    window.location.href = "index.html";
+  } else {
+    // Se tiver o nome, escreve na tela!
+    document.getElementById('mensagemBoasVindas').innerText = "Bem-vindo(a), " + nomeAlunoLogado + "!";
+  }
+</script>
 
 <section class="painel-conteudo">
   <div class="wrap">

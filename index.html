@@ -9,131 +9,90 @@
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --vinho:#7d0d12;
-    --vermelho:#d11f27;
-    --vermelho-vivo:#ef3b3b;
-    --rosa:#ffe6e6;
-    --rosa-forte:#ffd0d0;
-    --papel:#fff7f6;
-    --branco:#ffffff;
-    --tinta:#2c2120;
-    --tinta-suave:#8a6f6d;
-    --linha:#f0d3d3;
-    --grade: rgba(209,31,39,.06);
+    --vinho:#7d0d12; --vermelho:#d11f27; --vermelho-vivo:#ef3b3b;
+    --rosa:#ffe6e6; --rosa-forte:#ffd0d0; --papel:#fff7f6;
+    --branco:#ffffff; --tinta:#2c2120; --tinta-suave:#8a6f6d;
+    --linha:#f0d3d3; --grade: rgba(209,31,39,.06);
     --sombra: 0 14px 34px -18px rgba(125,13,18,.45);
     --sombra-suave: 0 6px 16px -10px rgba(125,13,18,.4);
-    --r-grande: 22px;
-    --r-medio: 16px;
-    --r-pequeno: 11px;
+    --r-grande: 22px; --r-medio: 16px; --r-pequeno: 11px;
   }
-
   *{ box-sizing:border-box; }
   html{ scroll-behavior:smooth; }
-  body{
-    margin:0;
-    font-family:'Nunito', system-ui, sans-serif;
-    color:var(--tinta);
-    background-color:var(--papel);
-    background-image:
-      linear-gradient(var(--grade) 1px, transparent 1px),
-      linear-gradient(90deg, var(--grade) 1px, transparent 1px);
-    background-size: 26px 26px;
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-    text-rendering:optimizeLegibility;
-  }
-
+  body{ margin:0; font-family:'Nunito', system-ui, sans-serif; color:var(--tinta); background-color:var(--papel); background-image: linear-gradient(var(--grade) 1px, transparent 1px), linear-gradient(90deg, var(--grade) 1px, transparent 1px); background-size: 26px 26px; line-height:1.6; }
   h1,h2,h3,h4{ font-family:'Fredoka', sans-serif; font-weight:600; line-height:1.12; margin:0; }
   p{ margin:0 0 1em; }
-  strong{ font-weight:800; color:var(--vinho); }
   a{ color:inherit; text-decoration: none; }
-
   .wrap{ width:min(1080px, 92vw); margin:0 auto; }
 
-  /* ---------------- Cabeçalho ---------------- */
-  header.topo{
-    position:sticky; top:0; z-index:50;
-    background:rgba(255,247,246,.86);
-    backdrop-filter:saturate(1.4) blur(10px);
-    -webkit-backdrop-filter:saturate(1.4) blur(10px);
-    border-bottom:2px solid var(--linha);
-  }
+  header.topo{ position:sticky; top:0; z-index:50; background:rgba(255,247,246,.86); backdrop-filter:blur(10px); border-bottom:2px solid var(--linha); }
   .topo-in{ display:flex; align-items:center; gap:14px; padding:12px 0; }
   .marca{ display:flex; align-items:center; gap:11px; font-family:'Fredoka',sans-serif; font-weight:600; }
-  .logo{
-    width:42px; height:42px; border-radius:12px; flex:none;
-    background:linear-gradient(150deg, var(--vermelho-vivo), var(--vinho));
-    background-image:
-      linear-gradient(rgba(255,255,255,.32) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,.32) 1px, transparent 1px),
-      linear-gradient(150deg, var(--vermelho-vivo), var(--vinho));
-    background-size: 10px 10px, 10px 10px, 100% 100%;
-    color:#fff; display:grid; place-items:center; font-size:1.4rem;
-    box-shadow: var(--sombra-suave);
-  }
+  .logo{ width:42px; height:42px; border-radius:12px; flex:none; background:linear-gradient(150deg, var(--vermelho-vivo), var(--vinho)); color:#fff; display:grid; place-items:center; font-size:1.4rem; box-shadow: var(--sombra-suave); }
   .marca b{ font-weight:600; font-size:1.1rem; line-height:1; }
-  .marca span{ display:block; font-family:'Nunito',sans-serif; font-weight:700; font-size:.72rem; color:var(--tinta-suave); letter-spacing:.04em; text-transform:uppercase; }
+  .marca span{ display:block; font-family:'Nunito',sans-serif; font-weight:700; font-size:.72rem; color:var(--tinta-suave); text-transform:uppercase; }
   nav.menu{ margin-left:auto; display:flex; gap:4px; flex-wrap:wrap; }
-  nav.menu a{
-    text-decoration:none; font-weight:700; font-size:.9rem; color:var(--tinta);
-    padding:7px 12px; border-radius:999px; transition:background .18s, color .18s;
-  }
+  nav.menu a{ text-decoration:none; font-weight:700; font-size:.9rem; color:var(--tinta); padding:7px 12px; border-radius:999px; transition:background .18s, color .18s; }
   nav.menu a:hover{ background:var(--rosa); color:var(--vinho); }
 
-  /* ---------------- Hero ---------------- */
   .hero{ padding:60px 0 40px; text-align: center; }
   .hero h1{ font-size:clamp(2.5rem, 6vw, 4rem); font-weight:700; letter-spacing:-.01em; color: var(--vinho); }
   .hero h1 em{ font-style:normal; color:var(--vermelho); }
   .hero .sub{ font-size:1.2rem; color:var(--tinta-suave); max-width:60ch; margin:16px auto 0; font-weight: 600; }
   
-  .prof{
-    display:inline-flex; align-items:center; gap:11px; margin-top:30px;
-    background:var(--vinho); color:#fff; padding:9px 20px 9px 11px; border-radius:999px;
-    box-shadow:var(--sombra-suave); font-weight:700; text-align: left;
-  }
+  .prof{ display:inline-flex; align-items:center; gap:11px; margin-top:30px; background:var(--vinho); color:#fff; padding:9px 20px 9px 11px; border-radius:999px; box-shadow:var(--sombra-suave); font-weight:700; text-align: left; }
   .prof .av{ width:36px; height:36px; border-radius:50%; background:#fff; color:var(--vinho); display:grid; place-items:center; font-family:'Fredoka',sans-serif; font-weight:600; font-size: 1.1rem;}
   .prof small{ display:block; font-weight:700; font-size:.7rem; opacity:.8; letter-spacing:.06em; text-transform:uppercase; line-height:1; margin-bottom:2px; }
 
-  /* ---------------- Seção de Links/Cards ---------------- */
   section.bloco{ padding:40px 0 60px; }
   .cab{ display:flex; align-items:flex-end; gap:16px; margin-bottom:30px; border-bottom:3px solid var(--rosa-forte); padding-bottom:16px; justify-content: center; text-align: center; }
   .cab .ttl h2{ font-size:clamp(1.6rem,4vw,2.2rem); color: var(--vinho); }
 
-  /* Ajustado para 3 colunas */
   .grid-cards{ display:grid; grid-template-columns:repeat(3, 1fr); gap:24px; max-width: 900px; margin: 0 auto; }
-  
-  .card-link{
-    background:var(--branco); border:2px solid var(--linha); border-radius:var(--r-grande);
-    padding:36px 20px; box-shadow:var(--sombra-suave); text-align: center;
-    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-  }
-  .card-link:hover{
-    transform: translateY(-6px);
-    border-color: var(--vermelho);
-    box-shadow: var(--sombra);
-  }
-  .card-link .icone{
-    width: 60px; height: 60px; border-radius: 16px; background: var(--rosa); color: var(--vinho);
-    display: grid; place-items: center; font-family: 'Fredoka', sans-serif; font-size: 1.8rem; font-weight: 600;
-    margin-bottom: 16px;
-  }
+  .card-link{ background:var(--branco); border:2px solid var(--linha); border-radius:var(--r-grande); padding:36px 20px; box-shadow:var(--sombra-suave); text-align: center; transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer;}
+  .card-link:hover{ transform: translateY(-6px); border-color: var(--vermelho); box-shadow: var(--sombra); }
+  .card-link .icone{ width: 60px; height: 60px; border-radius: 16px; background: var(--rosa); color: var(--vinho); display: grid; place-items: center; font-family: 'Fredoka', sans-serif; font-size: 1.8rem; font-weight: 600; margin-bottom: 16px; }
   .card-link h3{ font-size: 1.6rem; color: var(--vermelho); margin-bottom: 6px; }
   .card-link p{ margin: 0; color: var(--tinta-suave); font-weight: 700; font-size: 0.95rem; }
 
-  /* ---------------- Rodapé ---------------- */
-  footer.rodape{
-    background:var(--vinho); color:#fff; margin-top:40px;
-    border-top:6px solid var(--vermelho-vivo);
-  }
+  footer.rodape{ background:var(--vinho); color:#fff; margin-top:40px; border-top:6px solid var(--vermelho-vivo); }
   .rodape-in{ padding:38px 0; text-align:center; }
   .rodape .logo{ margin:0 auto 14px; }
   .rodape h3{ font-size:1.5rem; }
-  .rodape p{ opacity:.85; font-weight:600; max-width:48ch; margin:8px auto 0; }
 
-  /* ---------------- Responsivo ---------------- */
+  /* --------- Estilos do Modal de Login --------- */
+  .modal-overlay {
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(44, 33, 32, 0.6); backdrop-filter: blur(5px); z-index: 100;
+    justify-content: center; align-items: center; padding: 20px;
+  }
+  .modal-box {
+    background: var(--branco); padding: 40px; border-radius: var(--r-grande);
+    max-width: 400px; width: 100%; text-align: center; box-shadow: var(--sombra);
+    border: 3px solid var(--vermelho); position: relative;
+  }
+  .modal-box h3 { color: var(--vinho); font-size: 1.8rem; margin-bottom: 10px; }
+  .modal-box p { color: var(--tinta-suave); font-weight: 600; margin-bottom: 20px; }
+  .modal-input {
+    width: 100%; padding: 16px; border: 2px solid var(--linha); border-radius: 12px;
+    font-size: 1.1rem; font-family: 'Nunito', sans-serif; font-weight: 600;
+    margin-bottom: 20px; outline: none; transition: border-color 0.2s;
+  }
+  .modal-input:focus { border-color: var(--vermelho); }
+  .modal-btn {
+    width: 100%; background: var(--vermelho); color: #fff; border: none;
+    padding: 16px; border-radius: 12px; font-size: 1.2rem; font-family: 'Fredoka', sans-serif;
+    cursor: pointer; transition: background 0.2s;
+  }
+  .modal-btn:hover { background: var(--vinho); }
+  .btn-fechar {
+    position: absolute; top: 15px; right: 20px; font-size: 1.5rem; font-weight: bold;
+    color: var(--tinta-suave); cursor: pointer; border: none; background: none;
+  }
+  .btn-fechar:hover { color: var(--vermelho); }
+  .erro-msg { color: var(--vermelho-vivo); font-weight: 700; margin-bottom: 15px; display: none; }
+
   @media (max-width: 768px){
-    /* No celular as turmas ficam uma debaixo da outra */
     .grid-cards{ grid-template-columns:1fr; max-width: 400px; }
     nav.menu{ display:none; }
   }
@@ -143,16 +102,8 @@
 
 <header class="topo">
   <div class="wrap topo-in">
-    <div class="marca">
-      <div class="logo">M</div>
-      <div>
-        <b>Matemática</b>
-        <span>Tirando de Letra</span>
-      </div>
-    </div>
-    <nav class="menu" aria-label="Menu principal">
-      <a href="#turmas">Turmas</a>
-    </nav>
+    <div class="marca"><div class="logo">M</div><div><b>Matemática</b><span>Tirando de Letra</span></div></div>
+    <nav class="menu"><a href="#turmas">Turmas</a></nav>
   </div>
 </header>
 
@@ -160,46 +111,40 @@
   <div class="wrap">
     <h1>Matemática<br><em>Tirando de Letra</em></h1>
     <p class="sub">Descomplicando os números, fórmulas e geometria para você gabaritar! Acesse os cadernos de revisão da sua turma.</p>
-
-    <div class="prof">
-      <span class="av">JL</span>
-      <div>
-        <small>Professor</small>
-        Jardel A. Leite
-      </div>
-    </div>
+    <div class="prof"><span class="av">JL</span><div><small>Professor</small>Jardel A. Leite</div></div>
   </div>
 </section>
 
 <section class="bloco" id="turmas">
   <div class="wrap">
-    <div class="cab">
-      <div class="ttl">
-        <h2>Escolha por onde começar:</h2>
-      </div>
-    </div>
+    <div class="cab"><div class="ttl"><h2>Escolha por onde começar:</h2></div></div>
 
     <div class="grid-cards">
-      <a href="6ano.html" class="card-link">
-        <div class="icone">6º</div>
-        <h3>Conteúdos e Atividades - 6º Ano</h3>
-        <p>Porcentagem, Juros Simples, Frações e Volume de Poliedros</p>
+      <a onclick="abrirTurma('6', '6ano.html')" class="card-link">
+        <div class="icone">6º</div><h3>Revisão 6º Ano</h3><p>Caderno de estudos e resumos</p>
       </a>
-
-      <a href="7ano.html" class="card-link">
-        <div class="icone">7º</div>
-        <h3>Conteúdos e Atividade - 7º Ano</h3>
-        <p>Porcentagem, Juros Simples, Equações e Ângulos</p>
+      <a onclick="abrirTurma('7', '7ano.html')" class="card-link">
+        <div class="icone">7º</div><h3>Revisão 7º Ano</h3><p>Caderno de estudos e resumos</p>
       </a>
-
-      <a href="9ano.html" class="card-link">
-        <div class="icone">9º</div>
-        <h3>Conteúdos e atividades - 9º Ano</h3>
-        <p>Equações, Bhaskara e Pitágoras</p>
+      <a onclick="abrirTurma('9', '9ano.html')" class="card-link">
+        <div class="icone">9º</div><h3>Revisão 9º Ano</h3><p>Equações, Bhaskara e Pitágoras</p>
       </a>
     </div>
   </div>
 </section>
+
+<div class="modal-overlay" id="modalAcesso">
+  <div class="modal-box">
+    <button class="btn-fechar" onclick="fecharModal()">×</button>
+    <h3 id="tituloModal">Acesso à Turma</h3>
+    <p>Por favor, digite seu nome completo para acessar a página da sua turma.</p>
+    
+    <div id="mensagemErro" class="erro-msg">Nome não encontrado na lista. Fale com o Prof. Jardel!</div>
+    
+    <input type="text" id="nomeAluno" class="modal-input" placeholder="Ex: João da Silva">
+    <button class="modal-btn" onclick="verificarPermissao()">Entrar na Aula</button>
+  </div>
+</div>
 
 <footer class="rodape">
   <div class="wrap rodape-in">
@@ -208,6 +153,132 @@
     <p>&copy; 2026 Material elaborado pelo Professor Jardel A. Leite. Todos os direitos reservados.</p>
   </div>
 </footer>
+
+<script>
+  // 1. AQUI VOCÊ COLOCA A LISTA DE ALUNOS DE CADA TURMA!
+  const alunosPermitidos = {
+    '6': [
+      'Ana Heloisa Ferreira Feitosa',
+      'Anne Emanuelly Souza Amarante',
+      'Antônio Eduardo de Alencar Ribeiro',
+      'Bernardo Alencar Bento',
+      'Bryan Clayton Alves dos Santos',
+      'Carla Isis Ferreira dos Santos',
+      'Esther Maria do Santos Domingos',
+      'Isabella Inácio Rodrigues Tiburcio',
+      'Isis Martins Alves',
+      'João Neto Saraiva Feitosa',
+      'Júlio Arthur Fernande de Lima Guimarães',
+      'Layza Ketlen Ferreira de Souza',
+      'Luiz Miguel da Silva de Sousa',
+      'Maria Arielly Rodrigues de Sousa',
+      'Maria das Graças Nogueira Pinheiro',
+      'Milleny Rosendo de Souza',
+      'Pedro Henrique de Lima Alves',
+      'Thaila Maríllis Freire Brasil',
+      'Maria Thiffany Rodrigues Roseno',
+      'Jardel Araujo Leite'
+    ],
+    '7': [
+      'Ana Júlia Americo Alves',
+      'Ana Paula',
+      'Emilly Vitória Ferreira da Silva',
+      'Francisco Diógenis Oliveira Sousa',
+      'Francisco Ronald Andrade Pires',
+      'Luiz Antonio Guedes Rodrigues',
+      'Maria Cecília Rodrigues de Moura Tiburcio',
+      'Maria Ester Amarante Alves',
+      'Maria Lavinya Leite Guedes Nunes',
+      'Maria Lis Guedes Clementino',
+      'Pedro Guedes Castro de Moura',
+      'Victor Kauan Gomes de Oliveira',
+      'Henry Cauã Batista da Fonseca',
+      'Jardel Araujo Leite'
+    ],
+    '9': [
+      'Ana Júlia de Andrade Muniz',
+      'Ana Mel Guedes Gomes Cavalcante',
+      'Anne Élida Lima de Almeida',
+      'Antônio Miguel Nascimento de Souza',
+      'Cesar Felipe Rodrigues Freitas',
+      'Cícero Luis Gerônimo Leite de Andrade',
+      'Cristiane Custódio Pereira',
+      'Enzo Pietro Alves',
+      'Gustavo Amadeus Figueiredo de Almeida',
+      'João Leon Ferreira dos Santos',
+      'José Davi Alencar Santos',
+      'Juan Gabriel Amarantes de Andrade',
+      'Júlio César de Matos Saraiva Cruz',
+      'Luiza Vitória Martins dos Santos',
+      'Maria Gabriela Conceição dos Santos',
+      'Maria Isabella Freire Amorim',
+      'Pedro Marley Evangelista Cruz',
+      'Sophia Santos Veriato',
+      'Victor Gabriel Pereira de Oliveira',
+      'Yasmin de Oliveira Andrade',
+      'Jardel Araujo Leite'
+    ]
+  };
+
+  let turmaSelecionada = '';
+  let urlDestino = '';
+
+  function abrirTurma(turma, url) {
+    turmaSelecionada = turma;
+    urlDestino = url;
+    
+    // Verifica se o aluno já se identificou antes para esta turma
+    const alunoSalvo = localStorage.getItem('acesso_turma_' + turma);
+    
+    if (alunoSalvo) {
+      // Já está liberado, vai direto para a página!
+      window.location.href = url;
+    } else {
+      // Não está logado, abre a caixinha pedindo o nome
+      document.getElementById('tituloModal').innerText = 'Acesso ao ' + turma + 'º Ano';
+      document.getElementById('modalAcesso').style.display = 'flex';
+      document.getElementById('nomeAluno').value = '';
+      document.getElementById('mensagemErro').style.display = 'none';
+      document.getElementById('nomeAluno').focus();
+    }
+  }
+
+  function fecharModal() {
+    document.getElementById('modalAcesso').style.display = 'none';
+  }
+
+  function verificarPermissao() {
+    // Pega o nome digitado, tira os espaços em branco das pontas e transforma tudo em minúsculas
+    const nomeDigitado = document.getElementById('nomeAluno').value.trim().toLowerCase();
+    
+    // Pega a lista da turma que ele tentou entrar
+    const listaDaTurma = alunosPermitidos[turmaSelecionada];
+
+    // Procura na lista se o nome digitado existe, convertendo os nomes da lista para minúsculas temporariamente para comparar
+    const alunoEncontrado = listaDaTurma && listaDaTurma.find(function(nomeDaLista) {
+        return nomeDaLista.toLowerCase() === nomeDigitado;
+    });
+
+    // Se a variável alunoEncontrado tiver algum valor, significa que passou
+    if (alunoEncontrado) {
+      // SUCESSO! Salva o nome exatamente como está na sua lista (com as maiúsculas corretas)
+      localStorage.setItem('acesso_turma_' + turmaSelecionada, alunoEncontrado);
+      
+      // Manda-o para a página
+      window.location.href = urlDestino;
+    } else {
+      // ERRO! Nome não encontrado.
+      document.getElementById('mensagemErro').style.display = 'block';
+    }
+  }
+
+  // Se o aluno apertar a tecla "Enter", tenta fazer o login
+  document.getElementById('nomeAluno').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+      verificarPermissao();
+    }
+  });
+</script>
 
 </body>
 </html>
