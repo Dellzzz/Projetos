@@ -8,7 +8,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
 <style>
-  /* Variáveis de cores importadas do tema de revisão */
   :root{
     --vinho:#7d0d12;
     --vermelho:#d11f27;
@@ -80,7 +79,6 @@
     padding:7px 12px; border-radius:999px; transition:background .18s, color .18s;
   }
   nav.menu a:hover{ background:var(--rosa); color:var(--vinho); }
-  nav.menu a.destaque{ background:var(--vermelho); color:#fff; }
 
   /* ---------------- Hero ---------------- */
   .hero{ padding:60px 0 40px; text-align: center; }
@@ -101,11 +99,12 @@
   .cab{ display:flex; align-items:flex-end; gap:16px; margin-bottom:30px; border-bottom:3px solid var(--rosa-forte); padding-bottom:16px; justify-content: center; text-align: center; }
   .cab .ttl h2{ font-size:clamp(1.6rem,4vw,2.2rem); color: var(--vinho); }
 
-  .grid-cards{ display:grid; grid-template-columns:repeat(2, 1fr); gap:24px; max-width: 800px; margin: 0 auto; }
+  /* Ajustado para 3 colunas */
+  .grid-cards{ display:grid; grid-template-columns:repeat(3, 1fr); gap:24px; max-width: 900px; margin: 0 auto; }
   
   .card-link{
     background:var(--branco); border:2px solid var(--linha); border-radius:var(--r-grande);
-    padding:36px 26px; box-shadow:var(--sombra-suave); text-align: center;
+    padding:36px 20px; box-shadow:var(--sombra-suave); text-align: center;
     transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
   }
@@ -119,12 +118,8 @@
     display: grid; place-items: center; font-family: 'Fredoka', sans-serif; font-size: 1.8rem; font-weight: 600;
     margin-bottom: 16px;
   }
-  .card-link h3{ font-size: 1.8rem; color: var(--vermelho); margin-bottom: 6px; }
-  .card-link p{ margin: 0; color: var(--tinta-suave); font-weight: 700; font-size: 1rem; }
-
-  /* Card destaque para Atividades */
-  .card-link.destaque-card { border-color: var(--rosa-forte); background: linear-gradient(145deg, #fff, var(--papel)); }
-  .card-link.destaque-card .icone { background: var(--vermelho); color: #fff; }
+  .card-link h3{ font-size: 1.6rem; color: var(--vermelho); margin-bottom: 6px; }
+  .card-link p{ margin: 0; color: var(--tinta-suave); font-weight: 700; font-size: 0.95rem; }
 
   /* ---------------- Rodapé ---------------- */
   footer.rodape{
@@ -138,7 +133,8 @@
 
   /* ---------------- Responsivo ---------------- */
   @media (max-width: 768px){
-    .grid-cards{ grid-template-columns:1fr; }
+    /* No celular as turmas ficam uma debaixo da outra */
+    .grid-cards{ grid-template-columns:1fr; max-width: 400px; }
     nav.menu{ display:none; }
   }
 </style>
@@ -156,7 +152,6 @@
     </div>
     <nav class="menu" aria-label="Menu principal">
       <a href="#turmas">Turmas</a>
-      <a href="atividades.html" class="destaque">Atividades</a>
     </nav>
   </div>
 </header>
@@ -164,7 +159,7 @@
 <section class="hero">
   <div class="wrap">
     <h1>Matemática<br><em>Tirando de Letra</em></h1>
-    <p class="sub">Descomplicando os números, fórmulas e geometria para você gabaritar! Acesse os cadernos de revisão da sua turma ou pratique com as atividades.</p>
+    <p class="sub">Descomplicando os números, fórmulas e geometria para você gabaritar! Acesse os cadernos de revisão da sua turma.</p>
 
     <div class="prof">
       <span class="av">JL</span>
@@ -185,28 +180,22 @@
     </div>
 
     <div class="grid-cards">
-      <a href="6ano.html" class="card-link">
+      <a href="turma-6.html" class="card-link">
         <div class="icone">6º</div>
-        <h3>6º Ano</h3>
-        <p>Material de estudos, resumos e atividades</p>
+        <h3>Revisão 6º Ano</h3>
+        <p>Caderno de estudos e resumos</p>
       </a>
 
-      <a href="7ano.html" class="card-link">
+      <a href="turma-7.html" class="card-link">
         <div class="icone">7º</div>
-        <h3>7º Ano</h3>
-        <p>Material de estudos, resumos e atividades</p>
+        <h3>Revisão 7º Ano</h3>
+        <p>Caderno de estudos e resumos</p>
       </a>
 
-      <a href="9ano.html" class="card-link">
+      <a href="turma-9.html" class="card-link">
         <div class="icone">9º</div>
-        <h3>9º Ano</h3>
+        <h3>Revisão 9º Ano</h3>
         <p>Equações, Bhaskara e Pitágoras</p>
-      </a>
-
-      <a href="atividades.html" class="card-link destaque-card">
-        <div class="icone">✎</div>
-        <h3>Atividades</h3>
-        <p>Exercícios e listas de fixação</p>
       </a>
     </div>
   </div>
